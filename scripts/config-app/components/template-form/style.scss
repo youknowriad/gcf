@@ -1,0 +1,48 @@
+.gcf-template-form {
+  h1 {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  label {
+    width: 150px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  input,
+  select {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    min-height: 30px;
+    min-width: 200px;
+  }
+}
+
+.gcf-template-form__group {
+  margin-bottom: 10px;
+}
+
+.gcf-template-form__fields {
+  display: inline-block;
+}
+
+.gcf-template-form__field {
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  > div {
+    clear: both;
+  }
+}
+
+.gcf-template-form__remove-field {
+  float: right;
+}
+
+.gcf-template-form__footer .components-button {
+  margin-right: 10px;
+}

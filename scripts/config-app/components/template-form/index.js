@@ -9,7 +9,7 @@ import {
 } from "@wordpress/components";
 
 import "./style.scss";
-const AVAILABLE_FIELD_TYPES = ["text", "image"];
+const AVAILABLE_FIELD_TYPES = ["text", "image", "textarea", "number", "email"];
 
 class TemplateForm extends Component {
   constructor(props) {

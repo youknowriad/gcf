@@ -3,12 +3,12 @@ import React from "react";
 import Field from "../components/field";
 import { BlockControls } from "@wordpress/blocks";
 
-const textField = {
+const emailField = {
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
       icon: "text",
-      title: "GCF Text",
+      title: "GCF Email",
       isPrivate: true,
       attributes: {
         content: {
@@ -23,12 +23,12 @@ const textField = {
             {id => (
               <input
                 id={id}
-                type="text"
+                type="email"
                 value={attributes.content || ""}
                 onChange={event => {
                   setAttributes({ content: event.target.value });
                 }}
-                placeholder="Write"
+                placeholder="email@example.com"
               />
             )}
           </Field>
@@ -41,4 +41,4 @@ const textField = {
   }
 };
 
-export default textField;
+export default emailField;

@@ -3,12 +3,12 @@ import React from "react";
 import Field from "../components/field";
 import { BlockControls } from "@wordpress/blocks";
 
-const textField = {
+const textareaField = {
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
-      icon: "text",
-      title: "GCF Text",
+      icon: "textarea",
+      title: "GCF Textarea",
       isPrivate: true,
       attributes: {
         content: {
@@ -21,9 +21,8 @@ const textField = {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {id => (
-              <input
+              <textarea
                 id={id}
-                type="text"
                 value={attributes.content || ""}
                 onChange={event => {
                   setAttributes({ content: event.target.value });
@@ -41,4 +40,4 @@ const textField = {
   }
 };
 
-export default textField;
+export default textareaField;

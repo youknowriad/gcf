@@ -1,6 +1,7 @@
 import React from "react";
 
 import Field from "../components/field";
+import { BlockControls } from "@wordpress/blocks";
 
 const textField = {
   getBlockSettings(fieldConfig) {
@@ -8,6 +9,7 @@ const textField = {
       category: "common",
       icon: "text",
       title: "GCF Text",
+      isPrivate: true,
       attributes: {
         content: {
           type: "string",
@@ -18,16 +20,20 @@ const textField = {
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
-            {id => (
+            {id => [
               <input
+                key="input"
                 id={id}
                 value={attributes.content || ""}
                 onChange={event => {
                   setAttributes({ content: event.target.value });
                 }}
                 placeholder="Write"
-              />
-            )}
+              />,
+              <BlockControls key="controls">
+                <div />
+              </BlockControls>
+            ]}
           </Field>
         );
       },

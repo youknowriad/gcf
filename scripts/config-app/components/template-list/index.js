@@ -1,7 +1,7 @@
 import React from "react";
-import { withAPIData } from "@wordpress/components";
+import { withAPIData, IconButton } from "@wordpress/components";
 
-function TemplateList({ templates }) {
+function TemplateList({ templates, onEdit }) {
   if (!templates.data) {
     return null;
   }
@@ -16,6 +16,7 @@ function TemplateList({ templates }) {
         <tr>
           <th>Title</th>
           <th>Post Type</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,9 @@ function TemplateList({ templates }) {
           <tr key={template.id}>
             <td>{template.title}</td>
             <td>{template.post_type}</td>
+            <td>
+              <IconButton icon="edit" onClick={() => onEdit(template)} />
+            </td>
           </tr>
         ))}
       </tbody>

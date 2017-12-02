@@ -46,7 +46,7 @@ function register_gutenberg_custom_templates_blocks() {
 	wp_register_script(
 		'gcf-blocks',
 		gutenberg_custom_fields_url( 'scripts/blocks/build/index.js' ),
-		array( 'wp-blocks', 'wp-components' ),
+		array( 'wp-blocks', 'wp-components', 'wp-utils' ),
 		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/blocks/build/index.js' ),
 		true
 	);

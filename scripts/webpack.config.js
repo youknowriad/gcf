@@ -38,7 +38,7 @@ entryPointNames.forEach(entryPointName => {
   };
 });
 
-const wpDependencies = ["components", "element", "blocks"];
+const wpDependencies = ["components", "element", "blocks", "utils"];
 wpDependencies.forEach(wpDependency => {
   externals["@wordpress/" + wpDependency] = {
     this: ["wp", wpDependency]

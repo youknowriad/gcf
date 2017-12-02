@@ -15,6 +15,7 @@ class Layout extends Component {
     this.onNewTemplate = this.onNewTemplate.bind(this);
     this.onCancelEdition = this.onCancelEdition.bind(this);
     this.onSaveTemplate = this.onSaveTemplate.bind(this);
+    this.onEditTemplate = this.onEditTemplate.bind(this);
     this.mounted = true;
   }
 
@@ -31,6 +32,12 @@ class Layout extends Component {
   onCancelEdition() {
     this.setState({
       selectedTemplate: null
+    });
+  }
+
+  onEditTemplate(template) {
+    this.setState({
+      selectedTemplate: template
     });
   }
 
@@ -67,7 +74,7 @@ class Layout extends Component {
             isDisabled={loading}
           />
         )}
-        {!selectedTemplate && <TemplateList />}
+        {!selectedTemplate && <TemplateList onEdit={this.onEditTemplate} />}
       </div>
     );
   }

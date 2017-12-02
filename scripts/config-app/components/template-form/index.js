@@ -9,7 +9,7 @@ import {
 } from "@wordpress/components";
 
 import "./style.scss";
-const AVAILABLE_FIELD_TYPES = ["text"];
+const AVAILABLE_FIELD_TYPES = ["text", "image"];
 
 class TemplateForm extends Component {
   constructor(props) {
@@ -186,7 +186,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-title-${field.id}-${instanceId}`}
                   >
-                    Name
+                    Title
                   </label>
                   <input
                     id={`template-fields-title-${field.id}-${instanceId}`}

@@ -6,7 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Main CSS loader for everything but blocks..
 const cssExtractTextPlugin = new ExtractTextPlugin({
-  filename: "./[name]/build/style.css"
+  filename: "./scripts/[name]/build/style.css"
 });
 
 // Configuration for the ExtractTextPlugin.
@@ -47,12 +47,12 @@ wpDependencies.forEach(wpDependency => {
 
 const config = {
   entry: entryPointNames.reduce((memo, entryPointName) => {
-    memo[entryPointName] = "./" + entryPointName + "/index.js";
+    memo[entryPointName] = "./scripts/" + entryPointName + "/index.js";
     return memo;
   }, {}),
   externals,
   output: {
-    filename: "[name]/build/index.js",
+    filename: "scripts/[name]/build/index.js",
     path: __dirname,
     library: ["gcf", "[name]"],
     libraryTarget: "this"

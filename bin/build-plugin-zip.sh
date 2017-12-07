@@ -54,7 +54,7 @@ rm -f gcf.zip
 
 # Generate the plugin zip file
 status "Creating archive..."
-zip -r gutenberg.zip \
+zip -r gcf.zip \
 	gutenberg-custom-fields.php \
 	lib/*.php \
 	scripts/config-app/build/*.{js,map} \

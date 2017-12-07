@@ -25,7 +25,7 @@ const imageBlock = {
           meta: fieldConfig.name
         }
       },
-      edit({ attributes, setAttributes, className }) {
+      edit({ attributes, setAttributes, className, focus }) {
         const { url } = attributes;
 
         const uploadButtonProps = { isLarge: true };

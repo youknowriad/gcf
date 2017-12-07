@@ -1,6 +1,23 @@
 # Gutenberg Custom Fields
 
-Wait what? Is this really what I think this is?
+Gutenbeg Custom Fields allows you to control the content of the Gutenberg edit screen by creating pre-filled templates.
 
-Yes, these are the generic custom fields you're used to in plugins like ACF, CMB
-but using native Gutenberg API. Gutenberg Templates and Blocks.
+Navigate to the "GCF" admin page, create a new template, select a post type and add fields as you wish.
+
+The Gutenberg Editor will be pre-filled with the corresponding post type's template.
+
+### Features
+
+ - Customize the title, the name of the post_meta key and the type of the field.
+ - Several fields types available: Text, Textarea, Image, Number, Email and more to come.
+ - Based on Gutenberg Native Extensibility APIs (blocks and templates).
+
+### Screenshots
+
+**Create a template**
+
+![Create a template](./assets/template-create.png)
+
+**Write a new post with a prefilled template**
+
+![Edit screen](./assets/edit-screen.png)

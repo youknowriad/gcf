@@ -61,6 +61,7 @@ zip -r gcf.zip \
 	scripts/blocks/build/*.{js,map} \
 	scripts/config-app/build/*.css \
 	scripts/blocks/build/*.css \
-	README.md
+	README.md \
+	assets/*.png
 
 status "Done."

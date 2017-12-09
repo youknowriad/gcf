@@ -2,3 +2,4 @@ scripts/*/build
 node_modules
 gcf.zip
 .DS_Store
+svn

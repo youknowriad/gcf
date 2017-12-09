@@ -66,6 +66,7 @@ class Layout extends Component {
         <div className="gcf-layout__header">
           <TemplateNewButton onClick={this.onNewTemplate} />
         </div>
+
         {selectedTemplate && (
           <TemplateForm
             template={selectedTemplate}
@@ -74,7 +75,13 @@ class Layout extends Component {
             isDisabled={loading}
           />
         )}
-        {!selectedTemplate && <TemplateList onEdit={this.onEditTemplate} />}
+
+        {!selectedTemplate && (
+          <TemplateList
+            onEdit={this.onEditTemplate}
+            onCreateTemplate={this.onNewTemplate}
+          />
+        )}
       </div>
     );
   }

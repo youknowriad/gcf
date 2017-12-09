@@ -1,13 +1,15 @@
 import React from "react";
 import { withAPIData, IconButton } from "@wordpress/components";
 
-function TemplateList({ templates, onEdit }) {
+import About from "../about";
+
+function TemplateList({ templates, onEdit, onCreateTemplate }) {
   if (!templates.data) {
     return null;
   }
 
   if (templates.data.length === 0) {
-    return <div>No Template Yet!</div>;
+    return <About onCreateTemplate={onCreateTemplate} />;
   }
 
   return (

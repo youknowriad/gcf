@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import "./style.scss";
 import TemplateList from "../template-list";
 import TemplateNewButton from "../template-new-button";
 import TemplateForm from "../template-form";
+
+import { modelCreateRequest, modelUpdateRequest } from "../../store/effects";
 
 class Layout extends Component {
   constructor() {
@@ -43,14 +46,11 @@ class Layout extends Component {
 
   onSaveTemplate(template) {
     const isNew = !template.id;
-    const request = {
-      method: isNew ? "POST" : "PUT",
-      path: isNew ? "wp/v2/templates" : `wp/v2/templates/${template.id}`,
-      data: template,
-      dataType: "json"
-    };
+    const method = isNew
+      ? this.props.modelCreateRequest
+      : this.props.modelUpdateRequest;
     this.setState({ loading: true });
-    wp.apiRequest(request).then(body => {
+    method("templates", template).then(() => {
       if (!this.mounted) return;
       this.setState({
         selectedTemplate: null,
@@ -87,4 +87,6 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default connect(undefined, { modelCreateRequest, modelUpdateRequest })(
+  Layout
+);

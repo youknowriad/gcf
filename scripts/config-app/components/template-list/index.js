@@ -1,41 +1,42 @@
 import React from "react";
-import { withAPIData, IconButton } from "@wordpress/components";
+import { connect } from "react-redux";
+import { IconButton } from "@wordpress/components";
 
 import About from "../about";
+import QueryModelList from "../query/model-list";
+import { getRecords } from "../../store/selectors";
 
 function TemplateList({ templates, onEdit, onCreateTemplate }) {
-  if (!templates.data) {
-    return null;
-  }
-
-  if (templates.data.length === 0) {
-    return <About onCreateTemplate={onCreateTemplate} />;
-  }
-
-  return (
-    <table className="wp-list-table widefat gcf-template-list">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Post Type</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {templates.data.map(template => (
-          <tr key={template.id}>
-            <td>{template.title}</td>
-            <td>{template.post_type}</td>
-            <td>
-              <IconButton icon="edit" onClick={() => onEdit(template)} />
-            </td>
+  return [
+    <QueryModelList modelName="templates" key="query" />,
+    templates.length === 0 && (
+      <About onCreateTemplate={onCreateTemplate} key="about" />
+    ),
+    templates.length !== 0 && (
+      <table className="wp-list-table widefat gcf-template-list" key="list">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Post Type</th>
+            <th>Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+        </thead>
+        <tbody>
+          {templates.map(template => (
+            <tr key={template.id}>
+              <td>{template.title}</td>
+              <td>{template.post_type}</td>
+              <td>
+                <IconButton icon="edit" onClick={() => onEdit(template)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  ];
 }
 
-export default withAPIData(() => ({
-  templates: "/wp/v2/templates"
+export default connect(state => ({
+  templates: getRecords(state, "templates")
 }))(TemplateList);

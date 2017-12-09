@@ -1,14 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { cloneDeep, map, without, head, values } from "lodash";
 import uuid from "uuid/v4";
-import {
-  withInstanceId,
-  withAPIData,
-  Button,
-  IconButton
-} from "@wordpress/components";
+import { withInstanceId, Button, IconButton } from "@wordpress/components";
 
 import "./style.scss";
+import QueryModelList from "../query/model-list";
+import { getRecords } from "../../store/selectors";
+
 const AVAILABLE_FIELD_TYPES = ["text", "image", "textarea", "number", "email"];
 
 class TemplateForm extends Component {
@@ -32,13 +31,13 @@ class TemplateForm extends Component {
 
     if (
       newProps.postTypes !== this.props.postTypes &&
-      newProps.postTypes.data &&
+      newProps.postTypes.length !== 0 &&
       !this.state.editedTemplate.post_type
     ) {
       this.setState({
         editedTemplate: {
           ...this.state.editedTemplate,
-          post_type: head(values(newProps.postTypes.data)).slug
+          post_type: head(newProps.postTypes).slug
         }
       });
     }
@@ -118,8 +117,8 @@ class TemplateForm extends Component {
     const { editedTemplate } = this.state;
     const isNew = !editedTemplate.id;
 
-    if (!postTypes.data) {
-      return null;
+    if (postTypes.length === 0) {
+      return <QueryModelList modelName="postTypes" />;
     }
 
     return (
@@ -149,7 +148,7 @@ class TemplateForm extends Component {
             value={editedTemplate.post_type}
             onChange={this.onChangePostType}
           >
-            {map(postTypes.data, postType => (
+            {map(postTypes, postType => (
               <option key={postType.slug} value={postType.slug}>
                 {postType.name}
               </option>
@@ -237,6 +236,6 @@ class TemplateForm extends Component {
   }
 }
 
-export default withAPIData(() => ({
-  postTypes: "/wp/v2/types"
-}))(withInstanceId(TemplateForm));
+export default connect(state => ({
+  postTypes: getRecords(state, "postTypes")
+}))(TemplateForm);

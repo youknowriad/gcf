@@ -1,15 +1,18 @@
 import React from "react";
 import { render } from "react-dom";
-import { APIProvider } from "@wordpress/components";
+import { Provider } from "react-redux";
 
 import "./style.scss";
+import createStore from "./store";
 import Layout from "./components/layout";
+
+const store = createStore();
 
 wp.api.init().then(() => {
   render(
-    <APIProvider {...window.wpApiSettings}>
+    <Provider store={store}>
       <Layout />
-    </APIProvider>,
+    </Provider>,
     document.querySelector(".gutenberg-custom-fields")
   );
 });

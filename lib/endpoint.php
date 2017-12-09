@@ -4,7 +4,7 @@ class WP_REST_GCF_Gutenberg_Templates_Controller extends WP_REST_Controller {
 
 	public function __construct() {
 		// @codingStandardsIgnoreLine - PHPCS mistakes $this->namespace for the namespace keyword
-		$this->namespace = 'wp/v2'; // TODO: Use a custom namespace.
+		$this->namespace = 'gcf/v1';
 		$this->rest_base = 'templates';
 	}
 

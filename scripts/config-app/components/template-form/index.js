@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { cloneDeep, map, without, head, values } from "lodash";
+import { cloneDeep, map, without, head, values, filter } from "lodash";
 import uuid from "uuid/v4";
 import { withInstanceId, Button, IconButton } from "@wordpress/components";
 
@@ -148,11 +148,17 @@ class TemplateForm extends Component {
             value={editedTemplate.post_type}
             onChange={this.onChangePostType}
           >
-            {map(postTypes, postType => (
-              <option key={postType.slug} value={postType.slug}>
-                {postType.name}
-              </option>
-            ))}
+            {map(
+              filter(
+                postTypes,
+                postType => postType.show_ui && postType.slug !== "attachment"
+              ),
+              postType => (
+                <option key={postType.slug} value={postType.slug}>
+                  {postType.name}
+                </option>
+              )
+            )}
           </select>
         </div>
 

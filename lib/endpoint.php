@@ -167,6 +167,7 @@ class WP_REST_GCF_Gutenberg_Templates_Controller extends WP_REST_Controller {
 
 		$prepared_template->post_type = 'gcf-template';
 		$prepared_template->post_status = 'publish';
+		$prepared_template->meta_input = array();
 
 		// Title.
 		if ( isset( $request['title'] ) && is_string( $request['title'] ) ) {
@@ -179,9 +180,18 @@ class WP_REST_GCF_Gutenberg_Templates_Controller extends WP_REST_Controller {
 
 		// Post Type.
 		if ( isset( $request['post_type'] ) && is_string( $request['post_type'] ) ) {
-			$prepared_template->meta_input = array( 'post_type' => $request[ 'post_type' ] );
+			$prepared_template->meta_input[ 'post_type' ] = $request[ 'post_type' ];
 		} else {
 			return new WP_Error( 'gcf_template_invalid_field', __( 'Invalid template post type', 'gcf' ), array(
+				'status' => 400,
+			) );
+		}
+
+		// Lock.
+		if ( isset( $request['lock'] ) && is_string( $request[ 'lock' ] ) ) {
+			$prepared_template->meta_input[ 'lock' ] = $request[ 'lock' ];
+		} else {
+			return new WP_Error( 'gcf_template_invalid_field', __( 'Invalid template lock flag', 'gcf' ), array(
 				'status' => 400,
 			) );
 		}
@@ -203,6 +213,7 @@ class WP_REST_GCF_Gutenberg_Templates_Controller extends WP_REST_Controller {
 			'id' => (int) $template->ID,
 			'title' => $template->post_title,
 			'post_type' => get_post_meta( $template->ID, 'post_type', true ),
+			'lock' => get_post_meta( $template->ID, 'lock', true ),
 			'fields' => json_decode( get_post_meta( $template->ID, 'fields', true ), true ),
 		);
 
@@ -215,29 +226,35 @@ class WP_REST_GCF_Gutenberg_Templates_Controller extends WP_REST_Controller {
 
 	public function get_item_schema() {
 		return array(
-			'$schema'              => 'http://json-schema.org/schema#',
-			'title'                => 'gcf-template',
-			'type'                 => 'object',
-			'properties'           => array(
-				'id'               => array(
+			'$schema'          => 'http://json-schema.org/schema#',
+			'title'            => 'gcf-template',
+			'type'             => 'object',
+			'properties'       => array(
+				'id'             => array(
 					'description'  => __( 'ID that identifies this template.', 'gcf' ),
 					'type'         => 'integer',
 					'context'      => array( 'view', 'edit' ),
 					'readonly'     => true,
 				),
-				'title'             => array(
+				'title'          => array(
 					'description'  => __( 'Title of the template.', 'gcf' ),
 					'type'         => 'string',
 					'context'      => array( 'view', 'edit' ),
 					'required'     => true,
 				),
-				'post_type'          => array(
+				'post_type'      => array(
 					'description'  => __( 'The post type.', 'gcf' ),
 					'type'         => 'string',
 					'context'      => array( 'view', 'edit' ),
 					'required'     => true,
 				),
-				'fields'          => array(
+				'lock'           => array(
+					'description'  => __( 'Locking Config.', 'gcf' ),
+					'type'         => 'string',
+					'context'      => array( 'view', 'edit' ),
+					'required'     => true,
+				),
+				'fields'         => array(
 					'description'  => __( 'The Fields.', 'gcf' ),
 					'type'         => 'object',
 					'context'      => array( 'view', 'edit' ),

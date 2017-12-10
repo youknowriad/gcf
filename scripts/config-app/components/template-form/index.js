@@ -9,6 +9,11 @@ import QueryModelList from "../query/model-list";
 import { getRecords } from "../../store/selectors";
 
 const AVAILABLE_FIELD_TYPES = ["text", "image", "textarea", "number", "email"];
+const LOCK_OPTIONS = [
+  { value: "none", label: "None" },
+  { value: "insert", label: "Forbit adding/removing blocks" },
+  { value: "all", label: "Forbid adding/removing and moving blocks" }
+];
 
 class TemplateForm extends Component {
   constructor(props) {
@@ -18,6 +23,7 @@ class TemplateForm extends Component {
     };
     this.onChangeTitle = this.onChangeProperty("title");
     this.onChangePostType = this.onChangeProperty("post_type");
+    this.onChangeLock = this.onChangeProperty("lock");
     this.onAddField = this.onAddField.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -103,7 +109,10 @@ class TemplateForm extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit(this.state.editedTemplate);
+    const defaults = {
+      lock: "none"
+    };
+    this.props.onSubmit({ ...defaults, ...this.state.editedTemplate });
   }
 
   render() {
@@ -135,6 +144,7 @@ class TemplateForm extends Component {
         <div className="gcf-template-form__group">
           <label htmlFor={`template-title-${instanceId}`}>Title</label>
           <input
+            type="text"
             id={`template-title-${instanceId}`}
             value={editedTemplate.title || ""}
             onChange={this.onChangeTitle}
@@ -159,6 +169,21 @@ class TemplateForm extends Component {
                 </option>
               )
             )}
+          </select>
+        </div>
+
+        <div className="gcf-template-form__group">
+          <label htmlFor={`template-is-locked-${instanceId}`}>Title</label>
+          <select
+            id={`template-is-locked-${instanceId}`}
+            value={editedTemplate.lock || "none"}
+            onChange={this.onChangeLock}
+          >
+            {LOCK_OPTIONS.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 

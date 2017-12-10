@@ -21,6 +21,10 @@ function register_gutenberg_templates() {
 		'show_in_rest' => true,
 		'single' => true,
 	) );
+	register_meta( 'gcf-template', 'lock', array(
+		'show_in_rest' => true,
+		'single' => true,
+	) );
 	register_meta( 'gcf-template', 'fields', array(
 		'show_in_rest' => true,
 		'single' => true,

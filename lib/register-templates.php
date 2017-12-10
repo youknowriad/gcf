@@ -12,6 +12,7 @@ function register_gutenberg_custom_templates() {
 	foreach ( $templates as $template ) {
 		$post_type = get_post_type_object( get_post_meta( $template->ID, 'post_type', true ) );
 		if ( $post_type ) {
+			// Computing the template.
 			$gutenberg_template = array();
 			$fields_config = json_decode( get_post_meta( $template->ID, 'fields', true ) );
 			foreach( $fields_config as $field_config ) {
@@ -25,6 +26,12 @@ function register_gutenberg_custom_templates() {
 				) );
 			}
 			$post_type->template = $gutenberg_template;
+
+			// Computing the lock config.
+			$lock = get_post_meta( $template->ID, 'lock', true );
+			if ( $lock && $lock !== 'none' ) {
+				$post_type->template_lock = $lock;
+			}
 		}
 	}
 }

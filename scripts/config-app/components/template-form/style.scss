@@ -6,9 +6,12 @@
   }
 
   label {
-    width: 150px;
+    width: 100px;
+    line-height: 30px;
     display: inline-block;
     vertical-align: top;
+    text-align: right;
+    padding-right: 10px;
   }
 
   input[type="text"],
@@ -16,7 +19,7 @@
     border: 1px solid #ccc;
     box-shadow: none;
     min-height: 30px;
-    min-width: 200px;
+    width: 300px;
   }
 }
 
@@ -29,20 +32,38 @@
 }
 
 .gcf-template-form__field {
-  border: 1px solid #ccc;
-  background: #fff;
+  position: relative;
+  border: 1px dashed #ccc;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 30px 10px 10px;
+  width: 300px;
+  box-sizing: border-box;
 
   > div {
     clear: both;
   }
+
+  label {
+    width: 50px;
+  }
+
+  input[type="text"],
+  select {
+    width: 200px;
+  }
 }
 
 .gcf-template-form__remove-field {
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .gcf-template-form__footer .components-button {
   margin-right: 10px;
+}
+
+.gcf-template-form__footer {
+  margin-top: 20px;
+  margin-left: 110px;
 }

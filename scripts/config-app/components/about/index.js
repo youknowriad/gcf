@@ -16,8 +16,10 @@ function About({ onCreateTemplate }) {
         Gutenberg edit screen by creating pre-filled templates.
       </p>
       <p>
-        Start by <a onClick={onClick}>creating a new template</a>, select a post
-        type and add fields as you wish.
+        Start by{" "}
+        <a href="#" onClick={onClick}>
+          creating a new template
+        </a>, select a post type and add fields as you wish.
       </p>
     </div>
   );

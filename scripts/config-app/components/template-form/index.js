@@ -34,19 +34,6 @@ class TemplateForm extends Component {
         editedTemplate: cloneDeep(newProps.template)
       });
     }
-
-    if (
-      newProps.postTypes !== this.props.postTypes &&
-      newProps.postTypes.length !== 0 &&
-      !this.state.editedTemplate.post_type
-    ) {
-      this.setState({
-        editedTemplate: {
-          ...this.state.editedTemplate,
-          post_type: head(newProps.postTypes).slug
-        }
-      });
-    }
   }
 
   onChangeProperty(property) {
@@ -73,6 +60,30 @@ class TemplateForm extends Component {
         fields: (state.editedTemplate.fields || []).concat([newField])
       }
     }));
+  }
+
+  onBlurFieldName(field) {
+    return event => {
+      const value = event.target.value;
+      this.setState(state => {
+        const index = state.editedTemplate.fields.indexOf(field);
+        if (!!field.title) {
+          return;
+        }
+        const newField = {
+          ...field,
+          title: value
+        };
+        const newFields = [...state.editedTemplate.fields];
+        newFields[index] = newField;
+        return {
+          editedTemplate: {
+            ...state.editedTemplate,
+            fields: newFields
+          }
+        };
+      });
+    };
   }
 
   onChangeField(field, property) {
@@ -110,7 +121,8 @@ class TemplateForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const defaults = {
-      lock: "none"
+      lock: "none",
+      post_type: head(this.props.postTypes).slug
     };
     this.props.onSubmit({ ...defaults, ...this.state.editedTemplate });
   }
@@ -173,7 +185,7 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label htmlFor={`template-is-locked-${instanceId}`}>Title</label>
+          <label htmlFor={`template-is-locked-${instanceId}`}>Lock</label>
           <select
             id={`template-is-locked-${instanceId}`}
             value={editedTemplate.lock || "none"}
@@ -206,9 +218,11 @@ class TemplateForm extends Component {
                     Name
                   </label>
                   <input
+                    type="text"
                     id={`template-fields-name-${field.id}-${instanceId}`}
                     value={field.name || ""}
                     onChange={this.onChangeField(field, "name")}
+                    onBlur={this.onBlurFieldName(field)}
                   />
                 </div>
 
@@ -219,6 +233,7 @@ class TemplateForm extends Component {
                     Title
                   </label>
                   <input
+                    type="text"
                     id={`template-fields-title-${field.id}-${instanceId}`}
                     value={field.title || ""}
                     onChange={this.onChangeField(field, "title")}
@@ -247,19 +262,19 @@ class TemplateForm extends Component {
             ))}
 
             <IconButton
-              className="button gcf-template-form__add-field"
-              icon="plus-alt"
+              className="gcf-template-form__add-field"
+              icon="insert"
               onClick={this.onAddField}
             />
           </div>
         </div>
 
         <div className="gcf-template-form__footer">
-          <Button className="button" onClick={onCancel} disabled={isDisabled}>
-            Cancel
-          </Button>
           <Button type="submit" isPrimary disabled={isDisabled}>
             Save
+          </Button>
+          <Button className="button" onClick={onCancel} disabled={isDisabled}>
+            Cancel
           </Button>
         </div>
       </form>

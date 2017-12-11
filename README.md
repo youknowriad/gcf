@@ -8,6 +8,7 @@ The Gutenberg Editor will be pre-filled with the corresponding post type's templ
 
 ### Features
 
- - Customize the title, the name of the post_meta key and the type of the field.
- - Several fields types available: Text, Textarea, Image, Number, Email and more to come.
- - Based on Gutenberg Native Extensibility APIs (blocks and templates).
+* Customize the title, the name of the post_meta key and the type of the field.
+* Several fields types available: Text, Textarea, Image, Number, Email and more to come.
+* Based on Gutenberg Native Extensibility APIs (blocks and templates).
+* Templates Lock level.

@@ -1,6 +1,6 @@
 {
   "name": "gutenberg-custom-fields",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",

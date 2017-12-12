@@ -11,7 +11,7 @@ import { getRecords } from "../../store/selectors";
 const AVAILABLE_FIELD_TYPES = ["text", "image", "textarea", "number", "email"];
 const LOCK_OPTIONS = [
   { value: "none", label: "None" },
-  { value: "insert", label: "Forbit adding/removing blocks" },
+  { value: "insert", label: "Forbid adding/removing blocks" },
   { value: "all", label: "Forbid adding/removing and moving blocks" }
 ];
 

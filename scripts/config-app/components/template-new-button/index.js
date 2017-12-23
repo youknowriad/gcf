@@ -3,8 +3,8 @@ import { Button } from "@wordpress/components";
 
 function TemplateNewButton(props) {
   return (
-    <Button isPrimary {...props}>
-      New Template
+    <Button className="gcf-template-new-button" isPrimary {...props}>
+      Create a new template
     </Button>
   );
 }

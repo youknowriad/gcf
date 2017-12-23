@@ -1,8 +1,6 @@
 .gcf-template-form {
   h1 {
-    font-weight: 500;
-    font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   label {
@@ -10,7 +8,6 @@
     line-height: 30px;
     display: inline-block;
     vertical-align: top;
-    text-align: right;
     padding-right: 10px;
   }
 
@@ -66,4 +63,12 @@
 .gcf-template-form__footer {
   margin-top: 20px;
   margin-left: 110px;
+}
+
+.gcf-template-form__add-field {
+  margin-top: 2px;
+
+  .dashicon {
+    margin-right: 5px;
+  }
 }

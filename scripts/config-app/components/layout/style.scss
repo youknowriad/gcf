@@ -2,3 +2,15 @@
   margin: 20px 0;
   text-align: right;
 }
+
+.gcf-layout__templates-header {
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100;
+
+  h1 {
+    flex-grow: 1;
+  }
+}

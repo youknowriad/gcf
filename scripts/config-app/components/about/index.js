@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./style.scss";
+import TemplateNewButton from "../template-new-button";
 
 function About({ onCreateTemplate }) {
   const onClick = event => {
@@ -15,12 +16,8 @@ function About({ onCreateTemplate }) {
         Gutenberg Custom Fields allows you to control the content of the
         Gutenberg edit screen by creating pre-filled templates.
       </p>
-      <p>
-        Start by{" "}
-        <a href="#" onClick={onClick}>
-          creating a new template
-        </a>, select a post type and add fields as you wish.
-      </p>
+
+      <TemplateNewButton onClick={onCreateTemplate} isLarge />
     </div>
   );
 }

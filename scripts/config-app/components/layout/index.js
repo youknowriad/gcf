@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./style.scss";
+import About from "../about";
 import TemplateList from "../template-list";
 import TemplateNewButton from "../template-new-button";
 import TemplateForm from "../template-form";
+import QueryModelList from "../query/model-list";
 
 import { modelCreateRequest, modelUpdateRequest } from "../../store/effects";
+import { getRecords } from "../../store/selectors";
 
 class Layout extends Component {
   constructor() {
@@ -60,12 +63,11 @@ class Layout extends Component {
   }
 
   render() {
+    const { templates } = this.props;
     const { selectedTemplate, loading } = this.state;
     return (
       <div>
-        <div className="gcf-layout__header">
-          <TemplateNewButton onClick={this.onNewTemplate} />
-        </div>
+        <QueryModelList modelName="templates" key="query" />
 
         {selectedTemplate && (
           <TemplateForm
@@ -76,17 +78,31 @@ class Layout extends Component {
           />
         )}
 
-        {!selectedTemplate && (
-          <TemplateList
-            onEdit={this.onEditTemplate}
-            onCreateTemplate={this.onNewTemplate}
-          />
-        )}
+        {!selectedTemplate &&
+          !templates.length && <About onCreateTemplate={this.onNewTemplate} />}
+
+        {!selectedTemplate &&
+          !!templates.length && (
+            <div className="gcf-layout__templates">
+              <div className="gcf-layout__templates-header">
+                <h1>Your custom field templates</h1>
+                <TemplateNewButton onClick={this.onNewTemplate} />
+              </div>
+              <TemplateList
+                onEdit={this.onEditTemplate}
+                onCreateTemplate={this.onNewTemplate}
+                templates={templates}
+              />
+            </div>
+          )}
       </div>
     );
   }
 }
 
-export default connect(undefined, { modelCreateRequest, modelUpdateRequest })(
-  Layout
-);
+export default connect(
+  state => ({
+    templates: getRecords(state, "templates")
+  }),
+  { modelCreateRequest, modelUpdateRequest }
+)(Layout);

@@ -149,8 +149,8 @@ class TemplateForm extends Component {
       >
         <h1>
           {isNew
-            ? "New Gutenberg Template"
-            : `Edit Template ${editedTemplate.title}`}
+            ? "Creating a new Gutenberg custom field template"
+            : `Editing: ${editedTemplate.title}`}
         </h1>
 
         <div className="gcf-template-form__group">
@@ -265,16 +265,18 @@ class TemplateForm extends Component {
               className="gcf-template-form__add-field"
               icon="insert"
               onClick={this.onAddField}
-            />
+            >
+              Add Field
+            </IconButton>
           </div>
         </div>
 
         <div className="gcf-template-form__footer">
-          <Button type="submit" isPrimary disabled={isDisabled}>
-            Save
-          </Button>
           <Button className="button" onClick={onCancel} disabled={isDisabled}>
             Cancel
+          </Button>
+          <Button type="submit" isPrimary disabled={isDisabled}>
+            Save
           </Button>
         </div>
       </form>

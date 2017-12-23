@@ -1,3 +1,12 @@
-.gcf-about h1 {
-  margin-bottom: 40px;
+.wp-core-ui .gcf-about {
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .button.gcf-template-new-button {
+    margin-top: 10px;
+    height: 40px;
+    line-height: 38px;
+  }
 }

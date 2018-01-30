@@ -69,7 +69,6 @@ export function modelRemoveRequest(modelName, recordId) {
     const request = {
       method: "DELETE",
       path: model.namespace + "/" + model.root + "/" + recordId,
-      data: record,
       dataType: "json"
     };
     return wp.apiRequest(request).then(() => {

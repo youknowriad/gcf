@@ -1,7 +1,9 @@
 import React from "react";
 import { IconButton } from "@wordpress/components";
 
-function TemplateList({ templates, onEdit, onCreateTemplate }) {
+import "./style.scss";
+
+function TemplateList({ templates, onEdit, onRemove, onCreateTemplate }) {
   if (!templates.length) {
     return null;
   }
@@ -20,8 +22,9 @@ function TemplateList({ templates, onEdit, onCreateTemplate }) {
           <tr key={template.id}>
             <td>{template.title}</td>
             <td>{template.post_type}</td>
-            <td>
+            <td className="gcf-template-list__actions">
               <IconButton icon="edit" onClick={() => onEdit(template)} />
+              <IconButton icon="trash" onClick={() => onRemove(template)} />
             </td>
           </tr>
         ))}

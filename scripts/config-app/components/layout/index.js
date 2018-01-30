@@ -8,7 +8,11 @@ import TemplateNewButton from "../template-new-button";
 import TemplateForm from "../template-form";
 import QueryModelList from "../query/model-list";
 
-import { modelCreateRequest, modelUpdateRequest } from "../../store/effects";
+import {
+  modelCreateRequest,
+  modelUpdateRequest,
+  modelRemoveRequest
+} from "../../store/effects";
 import { getRecords } from "../../store/selectors";
 
 class Layout extends Component {
@@ -22,6 +26,7 @@ class Layout extends Component {
     this.onCancelEdition = this.onCancelEdition.bind(this);
     this.onSaveTemplate = this.onSaveTemplate.bind(this);
     this.onEditTemplate = this.onEditTemplate.bind(this);
+    this.onRemoveTemplate = this.onRemoveTemplate.bind(this);
     this.mounted = true;
   }
 
@@ -44,6 +49,15 @@ class Layout extends Component {
   onEditTemplate(template) {
     this.setState({
       selectedTemplate: template
+    });
+  }
+
+  onRemoveTemplate(template) {
+    this.props.modelRemoveRequest("templates", template.id).then(() => {
+      if (!this.mounted) return;
+      if (this.state.selectedTemplate === template) {
+        this.setState({ selectedTemplate: null });
+      }
     });
   }
 
@@ -90,6 +104,7 @@ class Layout extends Component {
               </div>
               <TemplateList
                 onEdit={this.onEditTemplate}
+                onRemove={this.onRemoveTemplate}
                 onCreateTemplate={this.onNewTemplate}
                 templates={templates}
               />
@@ -104,5 +119,5 @@ export default connect(
   state => ({
     templates: getRecords(state, "templates")
   }),
-  { modelCreateRequest, modelUpdateRequest }
+  { modelCreateRequest, modelUpdateRequest, modelRemoveRequest }
 )(Layout);

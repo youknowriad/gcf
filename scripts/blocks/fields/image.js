@@ -5,9 +5,11 @@ import {
   Dashicon,
   Toolbar,
   DropZone,
-  FormFileUpload
+  FormFileUpload,
+  Button,
+  IconButton
 } from "@wordpress/components";
-import { MediaUploadButton, BlockControls } from "@wordpress/blocks";
+import { MediaUpload, BlockControls } from "@wordpress/blocks";
 
 import Field from "../components/field";
 
@@ -28,7 +30,6 @@ const imageBlock = {
       edit({ attributes, setAttributes, className, focus }) {
         const { url } = attributes;
 
-        const uploadButtonProps = { isLarge: true };
         const onSelectImage = media => {
           const attributes = { url: media.url };
           setAttributes(attributes);
@@ -42,18 +43,19 @@ const imageBlock = {
               const controls = focus && (
                 <BlockControls key="controls">
                   <Toolbar>
-                    <MediaUploadButton
-                      buttonProps={{
-                        className:
-                          "components-icon-button components-toolbar__control",
-                        "aria-label": "Edit image"
-                      }}
+                    <MediaUpload
                       onSelect={onSelectImage}
                       type="image"
                       value={id}
-                    >
-                      <Dashicon icon="edit" />
-                    </MediaUploadButton>
+                      render={({ open }) => (
+                        <IconButton
+                          onClick={open}
+                          icon="edit"
+                          className="components-toolbar__control"
+                          label="Edit image"
+                        />
+                      )}
+                    />
                   </Toolbar>
                 </BlockControls>
               );
@@ -80,13 +82,15 @@ const imageBlock = {
                     >
                       {"Upload"}
                     </FormFileUpload>
-                    <MediaUploadButton
-                      buttonProps={uploadButtonProps}
+                    <MediaUpload
                       onSelect={onSelectImage}
                       type="image"
-                    >
-                      {"Insert from Media Library"}
-                    </MediaUploadButton>
+                      render={({ open }) => (
+                        <Button isLarge onClick={open}>
+                          {"Insert from Media Library"}
+                        </Button>
+                      )}
+                    />
                   </Placeholder>
                 ];
               }

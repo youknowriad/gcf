@@ -3,11 +3,17 @@ import image from "./image";
 import textarea from "./textarea";
 import number from "./number";
 import email from "./email";
+import datetime from "./datetime";
+import date from "./date";
+import time from "./time";
 
 export default {
   text,
   image,
   textarea,
   number,
-  email
+  email,
+  datetime,
+  date,
+  time
 };

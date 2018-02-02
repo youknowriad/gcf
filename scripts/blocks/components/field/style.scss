@@ -5,7 +5,7 @@
     margin-bottom: 5px;
   }
 
-  input[type="text"],
+  input[type="text"]:not(.components-time-picker__input),
   input[type="email"],
   textarea {
     width: 100%;
@@ -21,5 +21,10 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .components-time-picker {
+    display: block;
+    width: auto;
   }
 }

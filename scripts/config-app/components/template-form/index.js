@@ -8,7 +8,16 @@ import "./style.scss";
 import QueryModelList from "../query/model-list";
 import { getRecords } from "../../store/selectors";
 
-const AVAILABLE_FIELD_TYPES = ["text", "image", "textarea", "number", "email"];
+const AVAILABLE_FIELD_TYPES = [
+  "text",
+  "image",
+  "textarea",
+  "number",
+  "email",
+  "datetime",
+  "date",
+  "time"
+];
 const LOCK_OPTIONS = [
   { value: "none", label: "None" },
   { value: "insert", label: "Forbid adding/removing blocks" },

@@ -10,6 +10,9 @@ const numberField = {
       icon: "text",
       title: "GCF Numeric",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         content: {
           type: "number",

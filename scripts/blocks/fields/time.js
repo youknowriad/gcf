@@ -24,6 +24,9 @@ const timeField = {
       icon: "text",
       title: "GCF Time",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         time: {
           type: "string",

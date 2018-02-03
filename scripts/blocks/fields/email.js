@@ -10,6 +10,9 @@ const emailField = {
       icon: "text",
       title: "GCF Email",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         content: {
           type: "string",

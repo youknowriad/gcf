@@ -24,6 +24,9 @@ const datetimeField = {
       icon: "text",
       title: "GCF DateTime",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         datetime: {
           type: "string",

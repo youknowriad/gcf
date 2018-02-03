@@ -10,6 +10,9 @@ const textField = {
       icon: "text",
       title: "GCF Text",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         content: {
           type: "string",

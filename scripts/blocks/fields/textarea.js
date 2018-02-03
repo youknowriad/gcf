@@ -10,6 +10,9 @@ const textareaField = {
       icon: "textarea",
       title: "GCF Textarea",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         content: {
           type: "string",

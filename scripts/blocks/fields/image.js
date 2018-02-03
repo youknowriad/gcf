@@ -20,6 +20,9 @@ const imageBlock = {
       icon: "format-image",
       category: "common",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         url: {
           type: "string",

@@ -13,6 +13,9 @@ const dateField = {
       icon: "text",
       title: "GCF Date",
       isPrivate: true,
+      supports: {
+        html: false
+      },
       attributes: {
         date: {
           type: "string",

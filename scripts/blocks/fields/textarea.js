@@ -7,7 +7,7 @@ const textareaField = {
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
-      icon: "textarea",
+      icon: "text",
       title: "GCF Textarea",
       isPrivate: true,
       supports: {

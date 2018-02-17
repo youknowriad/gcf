@@ -6,12 +6,16 @@
   }
 
   input[type="text"]:not(.components-time-picker__input),
-  input[type="email"],
-  textarea {
+  input[type="email"] {
     width: 100%;
     border: none;
     padding: 0;
     box-shadow: none;
+    font-family: inherit;
+  }
+
+  .blocks-plain-text {
+    font-size: 13px;
   }
 
   input[type="number"] {

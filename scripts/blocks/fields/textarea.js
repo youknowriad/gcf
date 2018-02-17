@@ -1,7 +1,7 @@
 import React from "react";
 
 import Field from "../components/field";
-import { BlockControls } from "@wordpress/blocks";
+import { BlockControls, PlainText } from "@wordpress/blocks";
 
 const textareaField = {
   getBlockSettings(fieldConfig) {
@@ -24,11 +24,11 @@ const textareaField = {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {id => (
-              <textarea
+              <PlainText
                 id={id}
                 value={attributes.content || ""}
-                onChange={event => {
-                  setAttributes({ content: event.target.value });
+                onChange={content => {
+                  setAttributes({ content });
                 }}
                 placeholder="Write"
               />

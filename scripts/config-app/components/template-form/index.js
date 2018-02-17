@@ -16,7 +16,8 @@ const AVAILABLE_FIELD_TYPES = [
   "email",
   "datetime",
   "date",
-  "time"
+  "time",
+  "free"
 ];
 const LOCK_OPTIONS = [
   { value: "none", label: "None" },

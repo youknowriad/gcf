@@ -1,6 +1,5 @@
 import React from "react";
 
-import { BlockControls } from "@wordpress/blocks";
 import { DatePicker } from "@wordpress/components";
 import { settings } from "@wordpress/date";
 

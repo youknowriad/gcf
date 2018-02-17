@@ -6,6 +6,7 @@ import email from "./email";
 import datetime from "./datetime";
 import date from "./date";
 import time from "./time";
+import free from "./free";
 
 export default {
   text,
@@ -15,5 +16,6 @@ export default {
   email,
   datetime,
   date,
-  time
+  time,
+  free
 };

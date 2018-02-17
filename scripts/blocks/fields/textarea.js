@@ -1,7 +1,7 @@
 import React from "react";
 
 import Field from "../components/field";
-import { BlockControls, PlainText } from "@wordpress/blocks";
+import { PlainText } from "@wordpress/blocks";
 
 const textareaField = {
   getBlockSettings(fieldConfig) {

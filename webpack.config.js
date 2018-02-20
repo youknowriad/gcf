@@ -31,7 +31,9 @@ const extractConfig = {
 
 const entryPointNames = ["config-app", "blocks"];
 
-const externals = {};
+const externals = {
+  react: "React"
+};
 entryPointNames.forEach(entryPointName => {
   externals["@gcf/" + entryPointName] = {
     this: ["gcf", entryPointName]

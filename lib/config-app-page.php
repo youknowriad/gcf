@@ -73,7 +73,7 @@ function gutenberg_custom_fields_init( $hook ) {
 	wp_register_script(
 		'gcf-config-app',
 		gutenberg_custom_fields_url( 'scripts/config-app/build/index.js' ),
-		array( 'wp-components', 'wp-api', 'wp-api-request' ),
+		array( 'wp-element', 'wp-components', 'wp-api', 'wp-api-request' ),
 		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/config-app/build/index.js' ),
 		true
 	);

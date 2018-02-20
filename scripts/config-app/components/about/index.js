@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./style.scss";
 import TemplateNewButton from "../template-new-button";
 

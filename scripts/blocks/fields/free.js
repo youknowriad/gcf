@@ -1,5 +1,3 @@
-import React from "react";
-
 import Field from "../components/field";
 import { InnerBlocks } from "@wordpress/blocks";
 

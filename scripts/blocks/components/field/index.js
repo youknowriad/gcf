@@ -1,4 +1,3 @@
-import React from "react";
 import { withInstanceId } from "@wordpress/components";
 
 import "./style.scss";

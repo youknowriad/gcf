@@ -6,8 +6,6 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "qs": "^6.5.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -19,14 +17,11 @@
     "package-plugin": "./bin/build-plugin-zip.sh"
   },
   "devDependencies": {
+    "@wordpress/babel-preset-default": "^1.1.0",
+    "@wordpress/browserslist-config": "^2.1.0",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-lodash": "^3.3.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.7.2",
@@ -35,5 +30,8 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "webpack": "^3.8.1"
-  }
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ]
 }

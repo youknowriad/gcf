@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "@wordpress/element";
 import { connect } from "react-redux";
 
 import "./style.scss";

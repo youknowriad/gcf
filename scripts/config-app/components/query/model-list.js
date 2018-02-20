@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from "@wordpress/element";
 import { connect } from "react-redux";
 import { isEqual } from "lodash";
 

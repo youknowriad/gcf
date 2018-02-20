@@ -1,5 +1,3 @@
-import React from "react";
-
 import { TimePicker } from "@wordpress/components";
 import { settings } from "@wordpress/date";
 

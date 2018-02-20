@@ -1,8 +1,8 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import { cloneDeep, map, without, head, values, filter } from "lodash";
 import uuid from "uuid/v4";
 import { withInstanceId, Button, IconButton } from "@wordpress/components";
+import { Component } from "@wordpress/element";
 
 import "./style.scss";
 import QueryModelList from "../query/model-list";

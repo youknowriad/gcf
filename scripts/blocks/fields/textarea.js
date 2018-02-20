@@ -1,5 +1,3 @@
-import React from "react";
-
 import Field from "../components/field";
 import { PlainText } from "@wordpress/blocks";
 

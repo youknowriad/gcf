@@ -1,7 +1,7 @@
 import { registerBlockType } from "@wordpress/blocks";
 import fieldHandlers from "./fields";
 
-export default function registerBlocksForFields(fields = []) {
+export function registerBlocksForFields(fields = []) {
   fields.forEach(field => {
     const fieldHandler = fieldHandlers[field.type];
 
@@ -12,6 +12,3 @@ export default function registerBlocksForFields(fields = []) {
     }
   });
 }
-
-// Temporary hack
-window.gcf = { blocks: { registerBlocksForFields } };

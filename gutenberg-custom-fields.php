@@ -3,7 +3,7 @@
  * Plugin Name: Gutenberg Custom Fields
  * Plugin URI: https://github.com/youknowriad/gcf
  * Description: Custom Fields, The Gutenberg way
- * Version: 1.2.0
+ * Version: 1.3.1
  * Author: Riad Benguella
  *
  * @package gcf

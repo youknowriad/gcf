@@ -15,6 +15,8 @@ const is12HourTime = /a(?!\\)/i.test(
 );
 
 const timeField = {
+  name: "time",
+  label: "Time",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",

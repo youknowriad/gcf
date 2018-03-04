@@ -1,3 +1,5 @@
+import { dispatch } from "@wordpress/data";
+
 import text from "./text";
 import image from "./image";
 import textarea from "./textarea";
@@ -8,7 +10,7 @@ import date from "./date";
 import time from "./time";
 import free from "./free";
 
-export default {
+const fields = [
   text,
   image,
   textarea,
@@ -18,4 +20,6 @@ export default {
   date,
   time,
   free
-};
+];
+
+fields.forEach(field => dispatch("gcf/fields").register(field));

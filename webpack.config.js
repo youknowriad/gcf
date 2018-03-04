@@ -29,7 +29,7 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["config-app", "blocks"];
+const entryPointNames = ["config-app", "fields"];
 
 const externals = {
   react: "React"
@@ -40,7 +40,14 @@ entryPointNames.forEach(entryPointName => {
   };
 });
 
-const wpDependencies = ["components", "element", "blocks", "utils", "date"];
+const wpDependencies = [
+  "components",
+  "element",
+  "blocks",
+  "utils",
+  "date",
+  "data"
+];
 wpDependencies.forEach(wpDependency => {
   externals["@wordpress/" + wpDependency] = {
     this: ["wp", wpDependency]

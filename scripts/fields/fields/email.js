@@ -1,6 +1,8 @@
 import Field from "../components/field";
 
 const emailField = {
+  name: "email",
+  label: "Email",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",

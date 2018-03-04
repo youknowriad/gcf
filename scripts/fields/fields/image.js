@@ -14,6 +14,8 @@ import { MediaUpload, BlockControls } from "@wordpress/blocks";
 import Field from "../components/field";
 
 const imageBlock = {
+  name: "image",
+  label: "Image",
   getBlockSettings(fieldConfig) {
     return {
       title: "GCF Image",

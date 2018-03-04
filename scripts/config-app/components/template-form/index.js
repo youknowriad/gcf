@@ -3,22 +3,12 @@ import { cloneDeep, map, without, head, values, filter } from "lodash";
 import uuid from "uuid/v4";
 import { withInstanceId, Button, IconButton } from "@wordpress/components";
 import { Component } from "@wordpress/element";
+import { withSelect } from "@wordpress/data";
 
 import "./style.scss";
 import QueryModelList from "../query/model-list";
 import { getRecords } from "../../store/selectors";
 
-const AVAILABLE_FIELD_TYPES = [
-  "text",
-  "image",
-  "textarea",
-  "number",
-  "email",
-  "datetime",
-  "date",
-  "time",
-  "free"
-];
 const LOCK_OPTIONS = [
   { value: "none", label: "None" },
   { value: "insert", label: "Forbid adding/removing blocks" },
@@ -143,7 +133,8 @@ class TemplateForm extends Component {
       onCancel,
       onSubmit,
       postTypes,
-      isDisabled
+      isDisabled,
+      availableFieldTypes
     } = this.props;
     const { editedTemplate } = this.state;
     const isNew = !editedTemplate.id;
@@ -261,9 +252,9 @@ class TemplateForm extends Component {
                     value={field.type}
                     onChange={this.onChangeField(field, "type")}
                   >
-                    {map(AVAILABLE_FIELD_TYPES, fieldType => (
-                      <option key={fieldType} value={fieldType}>
-                        {fieldType}
+                    {map(availableFieldTypes, fieldType => (
+                      <option key={fieldType.name} value={fieldType.name}>
+                        {fieldType.label}
                       </option>
                     ))}
                   </select>
@@ -296,4 +287,8 @@ class TemplateForm extends Component {
 
 export default connect(state => ({
   postTypes: getRecords(state, "postTypes")
-}))(TemplateForm);
+}))(
+  withSelect(select => ({
+    availableFieldTypes: select("gcf/fields").all()
+  }))(TemplateForm)
+);

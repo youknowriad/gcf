@@ -1,12 +1,13 @@
 import Field from "../components/field";
-import { PlainText } from "@wordpress/blocks";
 
-const textareaField = {
+const textField = {
+  name: "text",
+  label: "Text",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
       icon: "text",
-      title: "GCF Textarea",
+      title: "GCF Text",
       isPrivate: true,
       supports: {
         html: false
@@ -22,11 +23,12 @@ const textareaField = {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {id => (
-              <PlainText
+              <input
                 id={id}
+                type="text"
                 value={attributes.content || ""}
-                onChange={content => {
-                  setAttributes({ content });
+                onChange={event => {
+                  setAttributes({ content: event.target.value });
                 }}
                 placeholder="Write"
               />
@@ -41,4 +43,4 @@ const textareaField = {
   }
 };
 
-export default textareaField;
+export default textField;

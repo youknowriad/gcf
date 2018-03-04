@@ -2,6 +2,8 @@ import Field from "../components/field";
 import { InnerBlocks } from "@wordpress/blocks";
 
 const freeField = {
+  name: "free",
+  label: "Free HTML Area",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",

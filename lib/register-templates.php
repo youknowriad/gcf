@@ -50,31 +50,17 @@ function register_gutenberg_custom_templates_blocks() {
 		$fields = array_merge($fields, $fields_config);
 	}
 
-	wp_register_script(
-		'gcf-blocks',
-		gutenberg_custom_fields_url( 'scripts/blocks/build/index.js' ),
-		array( 'wp-element', 'wp-blocks', 'wp-components', 'wp-utils', 'wp-date' ),
-		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/blocks/build/index.js' ),
-		true
-	);
-	wp_register_style(
-		'gcf-blocks',
-		gutenberg_custom_fields_url( 'scripts/blocks/build/style.css' ),
-		array( 'wp-components' ),
-		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/blocks/build/style.css' )
-	);
-
-	wp_enqueue_script( 'gcf-blocks' );
-	wp_add_inline_script( 'gcf-blocks', sprintf(
-		'gcf.blocks.registerBlocksForFields(%s)',
+	wp_enqueue_script( 'gcf-fields' );
+	wp_add_inline_script( 'gcf-fields', sprintf(
+		'gcf.fields.registerBlocksForFields(%s)',
 		json_encode($fields)
 	) );
-	wp_enqueue_style( 'gcf-blocks' );
+	wp_enqueue_style( 'gcf-fields' );
 
 	// Ensures the `wp-editor` loads after the template blocks are registered
 	global $wp_scripts;
 	$script = $wp_scripts->query( 'wp-editor', 'registered' );
-	$script->deps[] = 'gcf-blocks';
+	$script->deps[] = 'gcf-fields';
 }
 
 add_action( 'enqueue_block_editor_assets', 'register_gutenberg_custom_templates_blocks' );

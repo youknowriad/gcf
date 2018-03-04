@@ -1,9 +1,12 @@
 import { registerBlockType } from "@wordpress/blocks";
-import fieldHandlers from "./fields";
+import { select } from "@wordpress/data";
+
+import "./store";
+import "./fields";
 
 export function registerBlocksForFields(fields = []) {
   fields.forEach(field => {
-    const fieldHandler = fieldHandlers[field.type];
+    const fieldHandler = select("gcf/fields").get(field.type);
 
     if (fieldHandler) {
       const blockName = `gcf/gcf-${field.id}`;

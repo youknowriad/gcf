@@ -1,18 +1,21 @@
 import Field from "../components/field";
+import { PlainText } from "@wordpress/blocks";
 
-const numberField = {
+const textareaField = {
+  name: "textarea",
+  label: "Textarea",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
       icon: "text",
-      title: "GCF Numeric",
+      title: "GCF Textarea",
       isPrivate: true,
       supports: {
         html: false
       },
       attributes: {
         content: {
-          type: "number",
+          type: "string",
           source: "meta",
           meta: fieldConfig.name
         }
@@ -21,13 +24,13 @@ const numberField = {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {id => (
-              <input
+              <PlainText
                 id={id}
-                type="number"
                 value={attributes.content || ""}
-                onChange={event => {
-                  setAttributes({ content: event.target.value });
+                onChange={content => {
+                  setAttributes({ content });
                 }}
+                placeholder="Write"
               />
             )}
           </Field>
@@ -40,4 +43,4 @@ const numberField = {
   }
 };
 
-export default numberField;
+export default textareaField;

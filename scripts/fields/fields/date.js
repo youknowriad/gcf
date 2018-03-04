@@ -4,6 +4,8 @@ import { settings } from "@wordpress/date";
 import Field from "../components/field";
 
 const dateField = {
+  name: "date",
+  label: "Date",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",

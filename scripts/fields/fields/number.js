@@ -1,18 +1,20 @@
 import Field from "../components/field";
 
-const textField = {
+const numberField = {
+  name: "number",
+  label: "Number",
   getBlockSettings(fieldConfig) {
     return {
       category: "common",
       icon: "text",
-      title: "GCF Text",
+      title: "GCF Numeric",
       isPrivate: true,
       supports: {
         html: false
       },
       attributes: {
         content: {
-          type: "string",
+          type: "number",
           source: "meta",
           meta: fieldConfig.name
         }
@@ -23,12 +25,11 @@ const textField = {
             {id => (
               <input
                 id={id}
-                type="text"
+                type="number"
                 value={attributes.content || ""}
                 onChange={event => {
                   setAttributes({ content: event.target.value });
                 }}
-                placeholder="Write"
               />
             )}
           </Field>
@@ -41,4 +42,4 @@ const textField = {
   }
 };
 
-export default textField;
+export default numberField;

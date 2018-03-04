@@ -6,10 +6,9 @@ const freeField = {
   label: "Free HTML Area",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "layout",
-      title: "GCF Free Area",
-      isPrivate: true,
+      supports: {
+        html: true
+      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>

@@ -5,13 +5,6 @@ const numberField = {
   label: "Number",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF Numeric",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
       attributes: {
         content: {
           type: "number",
@@ -34,9 +27,6 @@ const numberField = {
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

@@ -19,38 +19,21 @@ const timeField = {
   label: "Time",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF Time",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        time: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {() => (
               <TimePicker
                 locale={settings.l10n.locale}
-                currentTime={attributes.time}
+                currentTime={attributes.content}
                 is12HourTime={is12HourTime}
-                onChange={time => {
-                  setAttributes({ time });
+                onChange={content => {
+                  setAttributes({ content });
                 }}
               />
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

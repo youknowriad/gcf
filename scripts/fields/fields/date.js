@@ -8,37 +8,20 @@ const dateField = {
   label: "Date",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF Date",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        date: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {() => (
               <DatePicker
                 locale={settings.l10n.locale}
-                currentDate={attributes.date}
-                onChange={date => {
-                  setAttributes({ date });
+                currentDate={attributes.content}
+                onChange={content => {
+                  setAttributes({ content });
                 }}
               />
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

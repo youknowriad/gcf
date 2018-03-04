@@ -18,25 +18,11 @@ const imageBlock = {
   label: "Image",
   getBlockSettings(fieldConfig) {
     return {
-      title: "GCF Image",
-      icon: "format-image",
-      category: "common",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        url: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes, className, focus }) {
-        const { url } = attributes;
+        const { content } = attributes;
 
         const onSelectImage = media => {
-          const attributes = { url: media.url };
+          const attributes = { content: media.url };
           setAttributes(attributes);
         };
         const uploadFromFiles = event =>
@@ -65,7 +51,7 @@ const imageBlock = {
                 </BlockControls>
               );
 
-              if (!url) {
+              if (!content) {
                 return [
                   controls,
                   <Placeholder
@@ -101,20 +87,16 @@ const imageBlock = {
               }
 
               const classes = classnames("gcf-image-block", {
-                "is-transient": 0 === url.indexOf("blob:")
+                "is-transient": 0 === content.indexOf("blob:")
               });
 
               return [
                 controls,
-                <img key="image" src={url} className={classes} />
+                <img key="image" src={content} className={classes} />
               ];
             }}
           </Field>
         );
-      },
-
-      save() {
-        return null;
       }
     };
   }

@@ -19,38 +19,21 @@ const datetimeField = {
   label: "Date and Time",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF DateTime",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        datetime: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {() => (
               <DateTimePicker
                 locale={settings.l10n.locale}
-                currentDate={attributes.datetime}
+                currentDate={attributes.content}
                 is12HourTime={is12HourTime}
-                onChange={datetime => {
-                  setAttributes({ datetime });
+                onChange={content => {
+                  setAttributes({ content });
                 }}
               />
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

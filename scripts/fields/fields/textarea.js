@@ -6,20 +6,6 @@ const textareaField = {
   label: "Textarea",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF Textarea",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        content: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
@@ -35,9 +21,6 @@ const textareaField = {
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

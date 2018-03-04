@@ -5,20 +5,6 @@ const textField = {
   label: "Text",
   getBlockSettings(fieldConfig) {
     return {
-      category: "common",
-      icon: "text",
-      title: "GCF Text",
-      isPrivate: true,
-      supports: {
-        html: false
-      },
-      attributes: {
-        content: {
-          type: "string",
-          source: "meta",
-          meta: fieldConfig.name
-        }
-      },
       edit({ attributes, setAttributes }) {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
@@ -35,9 +21,6 @@ const textField = {
             )}
           </Field>
         );
-      },
-      save() {
-        return null;
       }
     };
   }

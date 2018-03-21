@@ -1,9 +1,11 @@
-import Field from "../components/field";
+import { __ } from "@wordpress/i18n";
 import { PlainText } from "@wordpress/blocks";
+
+import Field from "../components/field";
 
 const textareaField = {
   name: "textarea",
-  label: "Textarea",
+  label: __("Textarea", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {
@@ -16,7 +18,7 @@ const textareaField = {
                 onChange={content => {
                   setAttributes({ content });
                 }}
-                placeholder="Write"
+                placeholder={__("Write", "gcf")}
               />
             )}
           </Field>

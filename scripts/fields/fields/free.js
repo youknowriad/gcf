@@ -1,9 +1,11 @@
-import Field from "../components/field";
 import { InnerBlocks } from "@wordpress/blocks";
+import { __ } from "@wordpress/i18n";
+
+import Field from "../components/field";
 
 const freeField = {
   name: "free",
-  label: "Free HTML Area",
+  label: __("Free HTML Area", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       supports: {

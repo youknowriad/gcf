@@ -1,8 +1,10 @@
+import { __ } from "@wordpress/i18n";
+
 import Field from "../components/field";
 
 const textField = {
   name: "text",
-  label: "Text",
+  label: __("Text", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {
@@ -16,7 +18,7 @@ const textField = {
                 onChange={event => {
                   setAttributes({ content: event.target.value });
                 }}
-                placeholder="Write"
+                placeholder={__("Write", "gcf")}
               />
             )}
           </Field>

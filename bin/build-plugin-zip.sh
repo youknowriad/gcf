@@ -48,6 +48,8 @@ status "Installing dependencies..."
 npm install
 status "Generating build..."
 npm run build
+status "Generating PHP file for wordpress.org to parse translations..."
+npx pot-to-php ./languages/gcf.pot ./languages/gcf-translations.php gcf
 
 # Remove any existing zip file
 rm -f gcf.zip

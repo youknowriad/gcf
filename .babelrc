@@ -1,3 +1,6 @@
 {
-  "presets": ["@wordpress/default"]
+  "presets": ["@wordpress/default"],
+  "plugins": [
+    ["@wordpress/babel-plugin-makepot", { "output": "languages/gcf.pot" }]
+  ]
 }

@@ -4,6 +4,8 @@
  * Plugin URI: https://github.com/youknowriad/gcf
  * Description: Custom Fields, The Gutenberg way
  * Version: 1.3.1
+ * Text Domain: gcf
+ * Domain Path: /languages
  * Author: Riad Benguella
  *
  * @package gcf
@@ -16,6 +18,7 @@ require_once dirname( __FILE__ ) . '/lib/common.php';
 require_once dirname( __FILE__ ) . '/lib/hacks.php';
 
 // Registering Script Files
+require_once dirname( __FILE__ ) . '/lib/i18n-script.php';
 require_once dirname( __FILE__ ) . '/lib/fields-script.php';
 require_once dirname( __FILE__ ) . '/lib/config-app-script.php';
 

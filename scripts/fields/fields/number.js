@@ -1,8 +1,10 @@
+import { __ } from "@wordpress/i18n";
+
 import Field from "../components/field";
 
 const numberField = {
   name: "number",
-  label: "Number",
+  label: __("Number", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       attributes: {

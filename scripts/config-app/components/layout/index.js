@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { Component } from "@wordpress/element";
 import { connect } from "react-redux";
 
@@ -99,7 +100,7 @@ class Layout extends Component {
           !!templates.length && (
             <div className="gcf-layout__templates">
               <div className="gcf-layout__templates-header">
-                <h1>Your custom field templates</h1>
+                <h1>{__("Your GCF templates", "gcf")}</h1>
                 <TemplateNewButton onClick={this.onNewTemplate} />
               </div>
               <TemplateList

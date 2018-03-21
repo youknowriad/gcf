@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Returns Jed-formatted localization data.
+ *
+ * @since 1.4.0
+ *
+ * @param  string $domain Translation domain.
+ *
+ * @return array
+ */
+function gutenberg_custom_fields_get_jed_locale_data( $domain ) {
+	$translations = get_translations_for_domain( $domain );
+
+	$locale = array(
+		'' => array(
+			'domain' => $domain,
+			'lang'   => is_admin() ? get_user_locale() : get_locale(),
+		),
+	);
+
+	if ( ! empty( $translations->headers['Plural-Forms'] ) ) {
+		$locale['']['plural_forms'] = $translations->headers['Plural-Forms'];
+	}
+
+	foreach ( $translations->entries as $msgid => $entry ) {
+		$locale[ $msgid ] = $entry->translations;
+	}
+
+	return $locale;
+}
+
+/**
+ * Registers the i18n script
+ *
+ * @since 1.4.0
+ */
+function gutenberg_custom_fields_i18n_register() {
+	$locale_data = gutenberg_custom_fields_get_jed_locale_data( 'gcf' );
+	$content = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "gcf" );';
+
+	wp_register_script(	'gcf-i18n', null, array( 'wp-i18n' ) );
+	wp_script_add_data( 'gcf-i18n', 'data', $content );
+}
+add_action( 'init', 'gutenberg_custom_fields_i18n_register' );
+
+
+/**
+ * Load plugin text domain for translations.
+ *
+ * @since 1.4.0
+ */
+function gutenberg_custom_fields_load_plugin_textdomain() {
+	load_plugin_textdomain(
+		'gcf',
+		false,
+		plugin_basename( gutenberg_custom_fields_dir_path() ) . '/languages/'
+	);
+}
+add_action( 'plugins_loaded', 'gutenberg_custom_fields_load_plugin_textdomain' );

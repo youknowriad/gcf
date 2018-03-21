@@ -10,12 +10,13 @@ import {
   IconButton
 } from "@wordpress/components";
 import { MediaUpload, BlockControls } from "@wordpress/blocks";
+import { __ } from "@wordpress/i18n";
 
 import Field from "../components/field";
 
 const imageBlock = {
   name: "image",
-  label: "Image",
+  label: __("Image", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes, className, focus }) {
@@ -43,7 +44,7 @@ const imageBlock = {
                           onClick={open}
                           icon="edit"
                           className="components-toolbar__control"
-                          label="Edit image"
+                          label={__("Edit image", "gcf")}
                         />
                       )}
                     />
@@ -56,9 +57,10 @@ const imageBlock = {
                   controls,
                   <Placeholder
                     key="placeholder"
-                    instructions={
-                      "Drag image here or insert from media library"
-                    }
+                    instructions={__(
+                      "Drag image here or insert from media library",
+                      "gcf"
+                    )}
                     icon="format-image"
                     label={"Image"}
                     className={className}
@@ -71,14 +73,14 @@ const imageBlock = {
                       onChange={uploadFromFiles}
                       accept="image/*"
                     >
-                      {"Upload"}
+                      {__("Upload", "gcf")}
                     </FormFileUpload>
                     <MediaUpload
                       onSelect={onSelectImage}
                       type="image"
                       render={({ open }) => (
                         <Button isLarge onClick={open}>
-                          {"Insert from Media Library"}
+                          {__("Insert from Media Library", "gcf")}
                         </Button>
                       )}
                     />

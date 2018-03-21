@@ -1,4 +1,5 @@
 import { IconButton } from "@wordpress/components";
+import { __ } from "@wordpress/i18n";
 
 import "./style.scss";
 
@@ -11,9 +12,9 @@ function TemplateList({ templates, onEdit, onRemove, onCreateTemplate }) {
     <table className="wp-list-table widefat gcf-template-list">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Post Type</th>
-          <th>Actions</th>
+          <th>{__("Title", "gcf")}</th>
+          <th>{__("Post Type", "gcf")}</th>
+          <th>{__("Actions", "gcf")}</th>
         </tr>
       </thead>
       <tbody>

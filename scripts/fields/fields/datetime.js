@@ -1,5 +1,6 @@
 import { DateTimePicker } from "@wordpress/components";
 import { settings } from "@wordpress/date";
+import { __ } from "@wordpress/i18n";
 
 import Field from "../components/field";
 
@@ -16,7 +17,7 @@ const is12HourTime = /a(?!\\)/i.test(
 
 const datetimeField = {
   name: "datetime",
-  label: "Date and Time",
+  label: __("Date and Time", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

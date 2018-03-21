@@ -1,8 +1,10 @@
+import { __ } from "@wordpress/i18n";
+
 import Field from "../components/field";
 
 const emailField = {
   name: "email",
-  label: "Email",
+  label: __("Email", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { cloneDeep, map, without, head, values, filter } from "lodash";
 import uuid from "uuid/v4";
+import { __, sprintf } from "@wordpress/i18n";
 import { withInstanceId, Button, IconButton } from "@wordpress/components";
 import { Component } from "@wordpress/element";
 import { withSelect } from "@wordpress/data";
@@ -10,9 +11,18 @@ import QueryModelList from "../query/model-list";
 import { getRecords } from "../../store/selectors";
 
 const LOCK_OPTIONS = [
-  { value: "none", label: "None" },
-  { value: "insert", label: "Forbid adding/removing blocks" },
-  { value: "all", label: "Forbid adding/removing and moving blocks" }
+  {
+    value: "none",
+    label: __("None", "gcf")
+  },
+  {
+    value: "insert",
+    label: __("Forbid adding/removing blocks", "gcf")
+  },
+  {
+    value: "all",
+    label: __("Forbid adding/removing and moving blocks", "gcf")
+  }
 ];
 
 class TemplateForm extends Component {
@@ -150,12 +160,14 @@ class TemplateForm extends Component {
       >
         <h1>
           {isNew
-            ? "Creating a new Gutenberg custom field template"
-            : `Editing: ${editedTemplate.title}`}
+            ? __("Creating a new GCF template", "gcf")
+            : sprintf(__("Editing: %s", "gcf"), editedTemplate.title)}
         </h1>
 
         <div className="gcf-template-form__group">
-          <label htmlFor={`template-title-${instanceId}`}>Title</label>
+          <label htmlFor={`template-title-${instanceId}`}>
+            {__("Title", "gcf")}
+          </label>
           <input
             type="text"
             id={`template-title-${instanceId}`}
@@ -165,7 +177,9 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label htmlFor={`template-post-type-${instanceId}`}>Post Type</label>
+          <label htmlFor={`template-post-type-${instanceId}`}>
+            {__("Post Type", "gcf")}
+          </label>
           <select
             id={`template-post-type-${instanceId}`}
             value={editedTemplate.post_type}
@@ -186,7 +200,9 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label htmlFor={`template-is-locked-${instanceId}`}>Lock</label>
+          <label htmlFor={`template-is-locked-${instanceId}`}>
+            {__("Lock", "gcf")}
+          </label>
           <select
             id={`template-is-locked-${instanceId}`}
             value={editedTemplate.lock || "none"}
@@ -201,7 +217,7 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label>Fields</label>
+          <label>{__("Fields", "gcf")}</label>
 
           <div className="gcf-template-form__fields">
             {map(editedTemplate.fields, field => (
@@ -216,7 +232,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-name-${field.id}-${instanceId}`}
                   >
-                    Name
+                    {__("Name", "gcf")}
                   </label>
                   <input
                     type="text"
@@ -231,7 +247,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-title-${field.id}-${instanceId}`}
                   >
-                    Title
+                    {__("Title", "gcf")}
                   </label>
                   <input
                     type="text"
@@ -245,7 +261,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-type-${field.id}-${instanceId}`}
                   >
-                    Type
+                    {__("Type", "gcf")}
                   </label>
                   <select
                     id={`template-fields-type-${field.id}-${instanceId}`}
@@ -267,17 +283,17 @@ class TemplateForm extends Component {
               icon="insert"
               onClick={this.onAddField}
             >
-              Add Field
+              {__("Add Field", "gcf")}
             </IconButton>
           </div>
         </div>
 
         <div className="gcf-template-form__footer">
           <Button className="button" onClick={onCancel} disabled={isDisabled}>
-            Cancel
+            {__("Cancel", "gcf")}
           </Button>
           <Button type="submit" isPrimary disabled={isDisabled}>
-            Save
+            {__("Save", "gcf")}
           </Button>
         </div>
       </form>

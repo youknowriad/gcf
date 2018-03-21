@@ -1,11 +1,12 @@
 import { DatePicker } from "@wordpress/components";
 import { settings } from "@wordpress/date";
+import { __ } from "@wordpress/i18n";
 
 import Field from "../components/field";
 
 const dateField = {
   name: "date",
-  label: "Date",
+  label: __("Date", "gcf"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

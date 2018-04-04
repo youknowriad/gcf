@@ -100,7 +100,7 @@ class Layout extends Component {
           !!templates.length && (
             <div className="gcf-layout__templates">
               <div className="gcf-layout__templates-header">
-                <h1>{__("Your GCF templates", "gcf")}</h1>
+                <h1>{__("Your GCF templates", "gutenberg-custom-fields")}</h1>
                 <TemplateNewButton onClick={this.onNewTemplate} />
               </div>
               <TemplateList

@@ -4,7 +4,7 @@ import Field from "../components/field";
 
 const numberField = {
   name: "number",
-  label: __("Number", "gcf"),
+  label: __("Number", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       attributes: {

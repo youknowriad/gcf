@@ -15,7 +15,7 @@ function About({ onCreateTemplate }) {
       <p>
         {__(
           "Gutenberg Custom Fields allows you to control the content of the Gutenberg edit screen by creating pre-filled templates.",
-          "gcf"
+          "gutenberg-custom-fields"
         )}
       </p>
 

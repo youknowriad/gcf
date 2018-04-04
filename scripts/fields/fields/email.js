@@ -4,7 +4,7 @@ import Field from "../components/field";
 
 const emailField = {
   name: "email",
-  label: __("Email", "gcf"),
+  label: __("Email", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

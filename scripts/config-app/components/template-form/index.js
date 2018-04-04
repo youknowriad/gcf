@@ -13,15 +13,18 @@ import { getRecords } from "../../store/selectors";
 const LOCK_OPTIONS = [
   {
     value: "none",
-    label: __("None", "gcf")
+    label: __("None", "gutenberg-custom-fields")
   },
   {
     value: "insert",
-    label: __("Forbid adding/removing blocks", "gcf")
+    label: __("Forbid adding/removing blocks", "gutenberg-custom-fields")
   },
   {
     value: "all",
-    label: __("Forbid adding/removing and moving blocks", "gcf")
+    label: __(
+      "Forbid adding/removing and moving blocks",
+      "gutenberg-custom-fields"
+    )
   }
 ];
 
@@ -160,13 +163,16 @@ class TemplateForm extends Component {
       >
         <h1>
           {isNew
-            ? __("Creating a new GCF template", "gcf")
-            : sprintf(__("Editing: %s", "gcf"), editedTemplate.title)}
+            ? __("Creating a new GCF template", "gutenberg-custom-fields")
+            : sprintf(
+                __("Editing: %s", "gutenberg-custom-fields"),
+                editedTemplate.title
+              )}
         </h1>
 
         <div className="gcf-template-form__group">
           <label htmlFor={`template-title-${instanceId}`}>
-            {__("Title", "gcf")}
+            {__("Title", "gutenberg-custom-fields")}
           </label>
           <input
             type="text"
@@ -178,7 +184,7 @@ class TemplateForm extends Component {
 
         <div className="gcf-template-form__group">
           <label htmlFor={`template-post-type-${instanceId}`}>
-            {__("Post Type", "gcf")}
+            {__("Post Type", "gutenberg-custom-fields")}
           </label>
           <select
             id={`template-post-type-${instanceId}`}
@@ -201,7 +207,7 @@ class TemplateForm extends Component {
 
         <div className="gcf-template-form__group">
           <label htmlFor={`template-is-locked-${instanceId}`}>
-            {__("Lock", "gcf")}
+            {__("Lock", "gutenberg-custom-fields")}
           </label>
           <select
             id={`template-is-locked-${instanceId}`}
@@ -217,7 +223,7 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label>{__("Fields", "gcf")}</label>
+          <label>{__("Fields", "gutenberg-custom-fields")}</label>
 
           <div className="gcf-template-form__fields">
             {map(editedTemplate.fields, field => (
@@ -232,7 +238,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-name-${field.id}-${instanceId}`}
                   >
-                    {__("Name", "gcf")}
+                    {__("Name", "gutenberg-custom-fields")}
                   </label>
                   <input
                     type="text"
@@ -247,7 +253,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-title-${field.id}-${instanceId}`}
                   >
-                    {__("Title", "gcf")}
+                    {__("Title", "gutenberg-custom-fields")}
                   </label>
                   <input
                     type="text"
@@ -261,7 +267,7 @@ class TemplateForm extends Component {
                   <label
                     htmlFor={`template-fields-type-${field.id}-${instanceId}`}
                   >
-                    {__("Type", "gcf")}
+                    {__("Type", "gutenberg-custom-fields")}
                   </label>
                   <select
                     id={`template-fields-type-${field.id}-${instanceId}`}
@@ -283,17 +289,17 @@ class TemplateForm extends Component {
               icon="insert"
               onClick={this.onAddField}
             >
-              {__("Add Field", "gcf")}
+              {__("Add Field", "gutenberg-custom-fields")}
             </IconButton>
           </div>
         </div>
 
         <div className="gcf-template-form__footer">
           <Button className="button" onClick={onCancel} disabled={isDisabled}>
-            {__("Cancel", "gcf")}
+            {__("Cancel", "gutenberg-custom-fields")}
           </Button>
           <Button type="submit" isPrimary disabled={isDisabled}>
-            {__("Save", "gcf")}
+            {__("Save", "gutenberg-custom-fields")}
           </Button>
         </div>
       </form>

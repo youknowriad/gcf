@@ -5,7 +5,7 @@ import Field from "../components/field";
 
 const freeField = {
   name: "free",
-  label: __("Free HTML Area", "gcf"),
+  label: __("Free HTML Area", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       supports: {

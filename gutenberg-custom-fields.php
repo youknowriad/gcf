@@ -3,8 +3,8 @@
  * Plugin Name: Gutenberg Custom Fields
  * Plugin URI: https://github.com/youknowriad/gcf
  * Description: Custom Fields, The Gutenberg way
- * Version: 1.4.1
- * Text Domain: gcf
+ * Version: 1.4.2
+ * Text Domain: gutenberg-custom-fields
  * Domain Path: /languages
  * Author: Riad Benguella
  *

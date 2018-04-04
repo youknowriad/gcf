@@ -5,7 +5,7 @@ import Field from "../components/field";
 
 const textareaField = {
   name: "textarea",
-  label: __("Textarea", "gcf"),
+  label: __("Textarea", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {
@@ -18,7 +18,7 @@ const textareaField = {
                 onChange={content => {
                   setAttributes({ content });
                 }}
-                placeholder={__("Write", "gcf")}
+                placeholder={__("Write", "gutenberg-custom-fields")}
               />
             )}
           </Field>

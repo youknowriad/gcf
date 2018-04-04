@@ -16,7 +16,7 @@ import Field from "../components/field";
 
 const imageBlock = {
   name: "image",
-  label: __("Image", "gcf"),
+  label: __("Image", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes, className, focus }) {
@@ -44,7 +44,7 @@ const imageBlock = {
                           onClick={open}
                           icon="edit"
                           className="components-toolbar__control"
-                          label={__("Edit image", "gcf")}
+                          label={__("Edit image", "gutenberg-custom-fields")}
                         />
                       )}
                     />
@@ -59,7 +59,7 @@ const imageBlock = {
                     key="placeholder"
                     instructions={__(
                       "Drag image here or insert from media library",
-                      "gcf"
+                      "gutenberg-custom-fields"
                     )}
                     icon="format-image"
                     label={"Image"}
@@ -73,14 +73,17 @@ const imageBlock = {
                       onChange={uploadFromFiles}
                       accept="image/*"
                     >
-                      {__("Upload", "gcf")}
+                      {__("Upload", "gutenberg-custom-fields")}
                     </FormFileUpload>
                     <MediaUpload
                       onSelect={onSelectImage}
                       type="image"
                       render={({ open }) => (
                         <Button isLarge onClick={open}>
-                          {__("Insert from Media Library", "gcf")}
+                          {__(
+                            "Insert from Media Library",
+                            "gutenberg-custom-fields"
+                          )}
                         </Button>
                       )}
                     />

@@ -36,8 +36,8 @@ function gutenberg_custom_fields_get_jed_locale_data( $domain ) {
  * @since 1.4.0
  */
 function gutenberg_custom_fields_i18n_register() {
-	$locale_data = gutenberg_custom_fields_get_jed_locale_data( 'gcf' );
-	$content = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "gcf" );';
+	$locale_data = gutenberg_custom_fields_get_jed_locale_data( 'gutenberg-custom-fields' );
+	$content = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "gutenberg-custom-fields" );';
 
 	wp_register_script(	'gcf-i18n', null, array( 'wp-i18n' ) );
 	wp_script_add_data( 'gcf-i18n', 'data', $content );
@@ -52,7 +52,7 @@ add_action( 'init', 'gutenberg_custom_fields_i18n_register' );
  */
 function gutenberg_custom_fields_load_plugin_textdomain() {
 	load_plugin_textdomain(
-		'gcf',
+		'gutenberg-custom-fields',
 		false,
 		plugin_basename( gutenberg_custom_fields_dir_path() ) . '/languages/'
 	);

@@ -6,7 +6,7 @@ import Field from "../components/field";
 
 const dateField = {
   name: "date",
-  label: __("Date", "gcf"),
+  label: __("Date", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

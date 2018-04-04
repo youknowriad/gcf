@@ -17,7 +17,7 @@ const is12HourTime = /a(?!\\)/i.test(
 
 const timeField = {
   name: "time",
-  label: __("Time", "gcf"),
+  label: __("Time", "gutenberg-custom-fields"),
   getBlockSettings(fieldConfig) {
     return {
       edit({ attributes, setAttributes }) {

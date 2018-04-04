@@ -12,9 +12,9 @@ function TemplateList({ templates, onEdit, onRemove, onCreateTemplate }) {
     <table className="wp-list-table widefat gcf-template-list">
       <thead>
         <tr>
-          <th>{__("Title", "gcf")}</th>
-          <th>{__("Post Type", "gcf")}</th>
-          <th>{__("Actions", "gcf")}</th>
+          <th>{__("Title", "gutenberg-custom-fields")}</th>
+          <th>{__("Post Type", "gutenberg-custom-fields")}</th>
+          <th>{__("Actions", "gutenberg-custom-fields")}</th>
         </tr>
       </thead>
       <tbody>

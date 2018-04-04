@@ -34,5 +34,7 @@
     "sass-loader": "^6.0.6",
     "webpack": "^3.8.1"
   },
-  "browserslist": ["extends @wordpress/browserslist-config"]
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ]
 }

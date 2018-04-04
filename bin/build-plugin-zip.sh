@@ -59,7 +59,7 @@ status "Creating archive..."
 zip -r gcf.zip \
 	gutenberg-custom-fields.php \
 	lib/*.php \
-	scripts/{fields,config-app}/build/*.{js,map,css} \
-	README.md
+	scripts/{fields,config-app}/build/*.{js,css} \
+	readme.txt
 
 status "Done."

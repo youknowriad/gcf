@@ -60,6 +60,7 @@ zip -r gcf.zip \
 	gutenberg-custom-fields.php \
 	lib/*.php \
 	scripts/{fields,config-app}/build/*.{js,css} \
+	languages/gcf-translations.php \
 	readme.txt
 
 status "Done."

@@ -34,7 +34,7 @@ This plugin is being worked on in <a href="https://github.com/youknowriad/gcf">G
 == Changelog ==
 
 = 1.4.0 =
-* Internalionalize the plugin
+* Internationalize the plugin
 
 = 1.3.0 =
 * Allow creating third-party GCF field types

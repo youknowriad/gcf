@@ -2,8 +2,7 @@ import yup from "yup";
 
 const fieldSchema = yup.object().shape({
   name: yup.string().required(),
-  label: yup.string().required(),
-  getBlockSettings: yup.mixed().required()
+  label: yup.string().required()
 });
 
 export function register(field) {

@@ -18,25 +18,19 @@ const is12HourTime = /a(?!\\)/i.test(
 const datetimeField = {
   name: "datetime",
   label: __("Date and Time", "gutenberg-custom-fields"),
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        return (
-          <Field label={fieldConfig.title || fieldConfig.name}>
-            {() => (
-              <DateTimePicker
-                locale={settings.l10n.locale}
-                currentDate={attributes.content}
-                is12HourTime={is12HourTime}
-                onChange={content => {
-                  setAttributes({ content });
-                }}
-              />
-            )}
-          </Field>
-        );
-      }
-    };
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <Field label={fieldConfig.title || fieldConfig.name}>
+        {() => (
+          <DateTimePicker
+            locale={settings.l10n.locale}
+            currentDate={value}
+            is12HourTime={is12HourTime}
+            onChange={onChange}
+          />
+        )}
+      </Field>
+    );
   }
 };
 

@@ -4,11 +4,19 @@ import { select } from "@wordpress/data";
 import "./store";
 import "./fields";
 
+export { default as FieldForm } from "./components/config/field-form";
+export { default as FieldListForm } from "./components/config/field-list-form";
+
 export function registerBlocksForFields(fields = []) {
   fields.forEach(field => {
     const fieldHandler = select("gcf/fields").get(field.type);
+    if (!fieldHandler) {
+      console.error('field handler for "' + field.type + '" not found');
+      return;
+    }
 
-    const defaultBlockSettings = {
+    const blockName = `gcf/gcf-${field.id}`;
+    const blockSettings = {
       category: "common",
       icon: "block-default",
       title: fieldHandler.label,
@@ -18,7 +26,7 @@ export function registerBlocksForFields(fields = []) {
       },
       attributes: {
         content: {
-          type: "string",
+          type: field.type || "string",
           source: "meta",
           meta: field.name
         }
@@ -26,13 +34,22 @@ export function registerBlocksForFields(fields = []) {
       save: () => null
     };
 
-    if (fieldHandler) {
-      const blockName = `gcf/gcf-${field.id}`;
-      const blockSettings = {
-        ...defaultBlockSettings,
-        ...fieldHandler.getBlockSettings(field)
+    if (fieldHandler.editForm) {
+      const EditForm = fieldHandler.editForm(field);
+      blockSettings.edit = ({ attributes, setAttributes }) => {
+        return (
+          <EditForm
+            value={attributes.content}
+            onChange={content => setAttributes({ content })}
+          />
+        );
       };
-      registerBlockType(blockName, blockSettings);
     }
+
+    if (fieldHandler.getBlockSettings) {
+      Object.assign(blockSettings, fieldHandler.getBlockSettings(field));
+    }
+
+    registerBlockType(blockName, blockSettings);
   });
 }

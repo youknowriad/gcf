@@ -6,25 +6,19 @@ import Field from "../components/field";
 const textareaField = {
   name: "textarea",
   label: __("Textarea", "gutenberg-custom-fields"),
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        return (
-          <Field label={fieldConfig.title || fieldConfig.name}>
-            {id => (
-              <PlainText
-                id={id}
-                value={attributes.content || ""}
-                onChange={content => {
-                  setAttributes({ content });
-                }}
-                placeholder={__("Write", "gutenberg-custom-fields")}
-              />
-            )}
-          </Field>
-        );
-      }
-    };
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <Field label={fieldConfig.title || fieldConfig.name}>
+        {id => (
+          <PlainText
+            id={id}
+            value={value || ""}
+            onChange={onChange}
+            placeholder={__("Write", "gutenberg-custom-fields")}
+          />
+        )}
+      </Field>
+    );
   }
 };
 

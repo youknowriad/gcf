@@ -7,24 +7,18 @@ import Field from "../components/field";
 const dateField = {
   name: "date",
   label: __("Date", "gutenberg-custom-fields"),
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        return (
-          <Field label={fieldConfig.title || fieldConfig.name}>
-            {() => (
-              <DatePicker
-                locale={settings.l10n.locale}
-                currentDate={attributes.content}
-                onChange={content => {
-                  setAttributes({ content });
-                }}
-              />
-            )}
-          </Field>
-        );
-      }
-    };
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <Field label={fieldConfig.title || fieldConfig.name}>
+        {() => (
+          <DatePicker
+            locale={settings.l10n.locale}
+            currentDate={value}
+            onChange={onChange}
+          />
+        )}
+      </Field>
+    );
   }
 };
 

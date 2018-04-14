@@ -23,7 +23,7 @@ GCF uses the WordPress data module to store the list of available field types. F
 const fieldTypes = wp.data.select("gcf/fields").all();
 ```
 
-You can use the data module to register new custom field types as well. Defining a field type means defining the `edit` function of the block used to edit this field type for example:
+You can use the data module to register new custom field types as well. Defining a field type means defining the `editForm` function of the field. A higher order component used to edit the field's value.
 
 ```js
 const myCustomFieldType = {
@@ -33,37 +33,25 @@ const myCustomFieldType = {
   // Label of your field type
   label: "My Custom Field Type",
 
-  // Function returning the block settings based on the field configuration
-  // The field configuration contains information like the name of the field, the title etc...
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        // By default the content of the field is saved in a block attribute name "content"
-        // This attribute is saved as post meta (using the name of the field)
-        // The attributes definition can be overridden
-        const { content } = attributes;
-
-        return (
-          <label>
-            {fieldConfig.title || fieldConfig.name}
-            <input
-              type="text"
-              value={attributes.content || ""}
-              onChange={event => {
-                setAttributes({ content: event.target.value });
-              }}
-              placeholder="Write"
-            />
-          </label>
-        );
-      }
-    };
+  // Function returning a Component used to edit the field value.
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <label>
+        {fieldConfig.title || fieldConfig.name}
+        <input
+          type="text"
+          value={value || ""}
+          onChange={event => {
+            onChange(event.target.value);
+          }}
+          placeholder="Write"
+        />
+      </label>
+    );
   }
 };
 
 wp.data.dispatch("gcf/fields").register(myCustomFieldType);
 ```
-
-In the example above `getBlockSettings` returns only the mandatory block settings (the `edit` function) and will use the default settings used by GCF. All these default settings can be overridden.
 
 Last thing, make sure your script registering your custom fields is loaded in Gutenberg before the editor initialization and in the GCF Admin page before the `gcf-config-app` script.

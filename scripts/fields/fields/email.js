@@ -5,26 +5,22 @@ import Field from "../components/field";
 const emailField = {
   name: "email",
   label: __("Email", "gutenberg-custom-fields"),
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        return (
-          <Field label={fieldConfig.title || fieldConfig.name}>
-            {id => (
-              <input
-                id={id}
-                type="email"
-                value={attributes.content || ""}
-                onChange={event => {
-                  setAttributes({ content: event.target.value });
-                }}
-                placeholder="email@example.com"
-              />
-            )}
-          </Field>
-        );
-      }
-    };
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <Field label={fieldConfig.title || fieldConfig.name}>
+        {id => (
+          <input
+            id={id}
+            type="email"
+            value={value || ""}
+            onChange={event => {
+              onChange(event.target.value);
+            }}
+            placeholder="email@example.com"
+          />
+        )}
+      </Field>
+    );
   }
 };
 

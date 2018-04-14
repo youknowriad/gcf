@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { cloneDeep, map, without, head, values, filter } from "lodash";
-import uuid from "uuid/v4";
+import { cloneDeep, map, head, filter } from "lodash";
 import { __, sprintf } from "@wordpress/i18n";
-import { withInstanceId, Button, IconButton } from "@wordpress/components";
+import { withInstanceId, Button } from "@wordpress/components";
 import { Component } from "@wordpress/element";
-import { withSelect } from "@wordpress/data";
+
+import { FieldListForm } from "@gcf/fields";
 
 import "./style.scss";
 import QueryModelList from "../query/model-list";
@@ -37,7 +37,7 @@ class TemplateForm extends Component {
     this.onChangeTitle = this.onChangeProperty("title");
     this.onChangePostType = this.onChangeProperty("post_type");
     this.onChangeLock = this.onChangeProperty("lock");
-    this.onAddField = this.onAddField.bind(this);
+    this.onChangeFields = this.onChangeFields.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -61,74 +61,15 @@ class TemplateForm extends Component {
     };
   }
 
-  onAddField() {
-    const newField = {
-      id: uuid(),
-      type: "text"
-    };
-
-    this.setState(state => ({
-      editedTemplate: {
-        ...state.editedTemplate,
-        fields: (state.editedTemplate.fields || []).concat([newField])
-      }
-    }));
-  }
-
-  onBlurFieldName(field) {
-    return event => {
-      const value = event.target.value;
-      this.setState(state => {
-        const index = state.editedTemplate.fields.indexOf(field);
-        if (!!field.title) {
-          return;
-        }
-        const newField = {
-          ...field,
-          title: value
-        };
-        const newFields = [...state.editedTemplate.fields];
-        newFields[index] = newField;
-        return {
-          editedTemplate: {
-            ...state.editedTemplate,
-            fields: newFields
-          }
-        };
-      });
-    };
-  }
-
-  onChangeField(field, property) {
-    return event => {
-      const value = event.target.value;
-      this.setState(state => {
-        const index = state.editedTemplate.fields.indexOf(field);
-        const newField = {
-          ...field,
-          [property]: value
-        };
-        const newFields = [...state.editedTemplate.fields];
-        newFields[index] = newField;
-        return {
-          editedTemplate: {
-            ...state.editedTemplate,
-            fields: newFields
-          }
-        };
-      });
-    };
-  }
-
-  onRemoveField(field) {
-    return () => {
-      this.setState(state => ({
+  onChangeFields(fields) {
+    this.setState(state => {
+      return {
         editedTemplate: {
           ...state.editedTemplate,
-          fields: without(state.editedTemplate.fields, field)
+          fields
         }
-      }));
-    };
+      };
+    });
   }
 
   onSubmit(event) {
@@ -223,75 +164,10 @@ class TemplateForm extends Component {
         </div>
 
         <div className="gcf-template-form__group">
-          <label>{__("Fields", "gutenberg-custom-fields")}</label>
-
-          <div className="gcf-template-form__fields">
-            {map(editedTemplate.fields, field => (
-              <div key={field.id} className="gcf-template-form__field">
-                <IconButton
-                  className="gcf-template-form__remove-field"
-                  icon="no-alt"
-                  onClick={this.onRemoveField(field)}
-                />
-
-                <div>
-                  <label
-                    htmlFor={`template-fields-name-${field.id}-${instanceId}`}
-                  >
-                    {__("Name", "gutenberg-custom-fields")}
-                  </label>
-                  <input
-                    type="text"
-                    id={`template-fields-name-${field.id}-${instanceId}`}
-                    value={field.name || ""}
-                    onChange={this.onChangeField(field, "name")}
-                    onBlur={this.onBlurFieldName(field)}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor={`template-fields-title-${field.id}-${instanceId}`}
-                  >
-                    {__("Title", "gutenberg-custom-fields")}
-                  </label>
-                  <input
-                    type="text"
-                    id={`template-fields-title-${field.id}-${instanceId}`}
-                    value={field.title || ""}
-                    onChange={this.onChangeField(field, "title")}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor={`template-fields-type-${field.id}-${instanceId}`}
-                  >
-                    {__("Type", "gutenberg-custom-fields")}
-                  </label>
-                  <select
-                    id={`template-fields-type-${field.id}-${instanceId}`}
-                    value={field.type}
-                    onChange={this.onChangeField(field, "type")}
-                  >
-                    {map(availableFieldTypes, fieldType => (
-                      <option key={fieldType.name} value={fieldType.name}>
-                        {fieldType.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            ))}
-
-            <IconButton
-              className="gcf-template-form__add-field"
-              icon="insert"
-              onClick={this.onAddField}
-            >
-              {__("Add Field", "gutenberg-custom-fields")}
-            </IconButton>
-          </div>
+          <FieldListForm
+            fields={editedTemplate.fields}
+            onChange={this.onChangeFields}
+          />
         </div>
 
         <div className="gcf-template-form__footer">
@@ -309,8 +185,4 @@ class TemplateForm extends Component {
 
 export default connect(state => ({
   postTypes: getRecords(state, "postTypes")
-}))(
-  withSelect(select => ({
-    availableFieldTypes: select("gcf/fields").all()
-  }))(TemplateForm)
-);
+}))(withInstanceId(TemplateForm));

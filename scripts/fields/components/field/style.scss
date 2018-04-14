@@ -5,12 +5,19 @@
     margin-bottom: 5px;
   }
 
+  textarea:focus,
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   input[type="text"]:not(.components-time-picker__input),
   input[type="email"] {
     width: 100%;
     border: none;
     padding: 0;
-    box-shadow: none;
     font-family: inherit;
   }
 
@@ -21,10 +28,6 @@
   input[type="number"] {
     border: none;
     padding: 0;
-    box-shadow: none;
-    &:focus {
-      outline: none;
-    }
   }
 
   .components-time-picker {

@@ -18,25 +18,19 @@ const is12HourTime = /a(?!\\)/i.test(
 const timeField = {
   name: "time",
   label: __("Time", "gutenberg-custom-fields"),
-  getBlockSettings(fieldConfig) {
-    return {
-      edit({ attributes, setAttributes }) {
-        return (
-          <Field label={fieldConfig.title || fieldConfig.name}>
-            {() => (
-              <TimePicker
-                locale={settings.l10n.locale}
-                currentTime={attributes.content}
-                is12HourTime={is12HourTime}
-                onChange={content => {
-                  setAttributes({ content });
-                }}
-              />
-            )}
-          </Field>
-        );
-      }
-    };
+  editForm: fieldConfig => ({ value, onChange }) => {
+    return (
+      <Field label={fieldConfig.title || fieldConfig.name}>
+        {() => (
+          <TimePicker
+            locale={settings.l10n.locale}
+            currentTime={value}
+            is12HourTime={is12HourTime}
+            onChange={onChange}
+          />
+        )}
+      </Field>
+    );
   }
 };
 

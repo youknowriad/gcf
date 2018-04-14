@@ -29,7 +29,7 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["config-app", "fields"];
+const entryPointNames = ["config-app", "fields", "i18n"];
 
 const externals = {
   react: "React"

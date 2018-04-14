@@ -39,8 +39,13 @@ function gutenberg_custom_fields_i18n_register() {
 	$locale_data = gutenberg_custom_fields_get_jed_locale_data( 'gutenberg-custom-fields' );
 	$content = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "gutenberg-custom-fields" );';
 
-	wp_register_script(	'gcf-i18n', null, array( 'wp-i18n' ) );
-	wp_script_add_data( 'gcf-i18n', 'data', $content );
+	wp_register_script(
+		'gcf-i18n',
+		gutenberg_custom_fields_url( 'scripts/i18n/build/index.js' ),
+		array( 'wp-i18n' ),
+		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/i18n/build/index.js' )
+	);
+	wp_add_inline_script( 'gcf-i18n', $content );
 }
 add_action( 'init', 'gutenberg_custom_fields_i18n_register' );
 

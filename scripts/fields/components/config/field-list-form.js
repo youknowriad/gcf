@@ -3,10 +3,11 @@ import uuid from "uuid/v4";
 
 import { IconButton } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+import { withSelect } from "@wordpress/data";
 
 import FieldForm from "./field-form";
 
-function FieldListForm({ fields = [], onChange }) {
+function FieldListForm({ fields = [], onChange, availableFieldTypes }) {
   const onRemoveField = field => () => {
     onChange(without(fields, field));
   };
@@ -40,7 +41,11 @@ function FieldListForm({ fields = [], onChange }) {
               onClick={onRemoveField(field)}
             />
 
-            <FieldForm field={field} onChange={onChangeField(field)} />
+            <FieldForm
+              field={field}
+              onChange={onChangeField(field)}
+              availableFieldTypes={availableFieldTypes}
+            />
           </div>
         ))}
 
@@ -56,4 +61,8 @@ function FieldListForm({ fields = [], onChange }) {
   );
 }
 
-export default FieldListForm;
+export default withSelect(select => ({
+  availableFieldTypes: select("gcf/fields")
+    .all()
+    .filter(field => field.editForm)
+}))(FieldListForm);

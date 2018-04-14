@@ -9,6 +9,7 @@ import datetime from "./datetime";
 import date from "./date";
 import time from "./time";
 import free from "./free";
+import repeater from "./repeater";
 
 const fields = [
   text,
@@ -19,7 +20,8 @@ const fields = [
   datetime,
   date,
   time,
-  free
+  free,
+  repeater
 ];
 
 fields.forEach(field => dispatch("gcf/fields").register(field));

@@ -1,14 +1,16 @@
 .gcf-template-form {
+  max-width: 700px;
+  padding: 0 10px;
+  margin: auto;
+
   h1 {
     margin-bottom: 30px;
   }
 
   label {
-    width: 100px;
     line-height: 30px;
-    display: inline-block;
+    display: block;
     vertical-align: top;
-    padding-right: 10px;
   }
 
   input[type="text"],
@@ -16,37 +18,28 @@
     border: 1px solid #ccc;
     box-shadow: none;
     min-height: 30px;
-    width: 300px;
+    max-width: 400px;
   }
 }
 
-.gcf-template-form__group {
+.gcf-template-form__group,
+.gcf-fields__field-list-form,
+.gcf-fields__field-form > div {
   margin-bottom: 10px;
-}
-
-.gcf-template-form__fields {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: minmax(80px, 150px) minmax(140px, 1fr);
+  grid-gap: 10px;
 }
 
 .gcf-template-form__field {
   position: relative;
-  border: 1px dashed #ccc;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
   margin-bottom: 10px;
   padding: 30px 10px 10px;
-  width: 300px;
-  box-sizing: border-box;
 
   > div {
     clear: both;
-  }
-
-  label {
-    width: 50px;
-  }
-
-  input[type="text"],
-  select {
-    width: 200px;
   }
 }
 

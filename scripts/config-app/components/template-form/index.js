@@ -156,12 +156,10 @@ class TemplateForm extends Component {
           </select>
         </div>
 
-        <div className="gcf-template-form__group">
-          <FieldListForm
-            fields={editedTemplate.fields}
-            onChange={this.onChangeFields}
-          />
-        </div>
+        <FieldListForm
+          fields={editedTemplate.fields}
+          onChange={this.onChangeFields}
+        />
 
         <div className="gcf-template-form__footer">
           <Button className="button" onClick={onCancel} disabled={isDisabled}>

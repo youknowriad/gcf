@@ -9,8 +9,8 @@ export { default as FieldListForm } from "./components/config/field-list-form";
 
 export function registerBlocksForFields(fields = []) {
   fields.forEach(field => {
-    const fieldHandler = select("gcf/fields").get(field.type);
-    if (!fieldHandler) {
+    const fieldType = select("gcf/fields").get(field.type);
+    if (!fieldType) {
       // eslint-disable-next-line no-console
       console.error('field handler for "' + field.type + '" not found');
       return;
@@ -20,7 +20,7 @@ export function registerBlocksForFields(fields = []) {
     const blockSettings = {
       category: "common",
       icon: "block-default",
-      title: fieldHandler.label,
+      title: fieldType.label,
       isPrivate: true,
       supports: {
         html: false
@@ -35,8 +35,8 @@ export function registerBlocksForFields(fields = []) {
       save: () => null
     };
 
-    if (fieldHandler.editForm) {
-      const EditForm = fieldHandler.editForm(field);
+    if (fieldType.editForm) {
+      const EditForm = fieldType.editForm(field);
       blockSettings.edit = ({ attributes, setAttributes }) => {
         return (
           <EditForm
@@ -47,8 +47,8 @@ export function registerBlocksForFields(fields = []) {
       };
     }
 
-    if (fieldHandler.getBlockSettings) {
-      Object.assign(blockSettings, fieldHandler.getBlockSettings(field));
+    if (fieldType.getBlockSettings) {
+      Object.assign(blockSettings, fieldType.getBlockSettings(field));
     }
 
     registerBlockType(blockName, blockSettings);

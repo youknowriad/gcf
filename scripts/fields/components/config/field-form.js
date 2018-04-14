@@ -86,8 +86,8 @@ function FieldForm({
 }
 
 export default compose([
-  withSelect((select, { field }) => ({
-    availableFieldTypes: select("gcf/fields").all(),
+  withSelect((select, { availableFieldTypes, field }) => ({
+    availableFieldTypes: availableFieldTypes || select("gcf/fields").all(),
     fieldType: select("gcf/fields").get(field.type)
   })),
   withInstanceId

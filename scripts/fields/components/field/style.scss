@@ -5,7 +5,7 @@
     margin-bottom: 5px;
   }
 
-  textarea:focus,
+  .blocks-plain-text:focus,
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="number"]:focus {
@@ -19,19 +19,44 @@
     border: none;
     padding: 0;
     font-family: inherit;
+    display: block;
+    min-height: 23px;
+    background: transparent;
   }
 
   .blocks-plain-text {
     font-size: 13px;
+    background: transparent;
   }
 
   input[type="number"] {
     border: none;
     padding: 0;
+    background: transparent;
   }
 
   .components-time-picker {
     display: block;
     width: auto;
   }
+
+  .components-icon-button {
+    display: flex;
+  }
+}
+
+.gcf-fields-repeater__row {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.gcf-fields-repeater__row-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

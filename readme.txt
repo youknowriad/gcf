@@ -2,7 +2,7 @@
 Contributors: youknowriad
 Requires at least: 4.8
 Tested up to: 4.9
-Stable tag: 1.4.2
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gutenberg
@@ -32,6 +32,12 @@ The Gutenberg Editor will be pre-filled with the corresponding post type's templ
 This plugin is being worked on in <a href="https://github.com/youknowriad/gcf">GitHub</a>
 
 == Changelog ==
+
+= 1.5.0 =
+* Add a repeater field (saved as JSON)
+* Simplify custom field API
+* Small UI tweaks
+* Fix i18n issues
 
 = 1.4.0 =
 * Internationalize the plugin

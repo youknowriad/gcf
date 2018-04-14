@@ -11,7 +11,7 @@ const freeField = {
       supports: {
         html: true
       },
-      edit({ attributes, setAttributes }) {
+      edit() {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {() => (

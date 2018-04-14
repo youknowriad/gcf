@@ -1,14 +1,12 @@
 import { without, map } from "lodash";
 import uuid from "uuid/v4";
 
-import { compose } from "@wordpress/element";
-import { withSelect } from "@wordpress/data";
-import { withInstanceId, IconButton } from "@wordpress/components";
+import { IconButton } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 import FieldForm from "./field-form";
 
-function FieldListForm({ fields = [], instanceId, onChange }) {
+function FieldListForm({ fields = [], onChange }) {
   const onRemoveField = field => () => {
     onChange(without(fields, field));
   };

@@ -1,0 +1,34 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": ["prettier", "react"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "globals": {
+    "wp": true,
+    "document": true,
+    "console": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "wp"
+    }
+  },
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/prop-types": [0],
+    "react/display-name": [0]
+  }
+}

@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 
 import "./style.scss";
 
-function TemplateList({ templates, onEdit, onRemove, onCreateTemplate }) {
+function TemplateList({ templates, onEdit, onRemove }) {
   if (!templates.length) {
     return null;
   }

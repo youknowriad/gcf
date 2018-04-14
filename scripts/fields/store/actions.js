@@ -8,6 +8,7 @@ const fieldSchema = yup.object().shape({
 export function register(field) {
   if (!fieldSchema.isValidSync(field)) {
     fieldSchema.validate(field).catch(err => {
+      // eslint-disable-next-line no-console
       console.error("Invalid field:", err.name, err.errors, field);
     });
     return;

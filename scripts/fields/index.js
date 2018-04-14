@@ -11,6 +11,7 @@ export function registerBlocksForFields(fields = []) {
   fields.forEach(field => {
     const fieldHandler = select("gcf/fields").get(field.type);
     if (!fieldHandler) {
+      // eslint-disable-next-line no-console
       console.error('field handler for "' + field.type + '" not found');
       return;
     }

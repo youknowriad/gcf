@@ -12,8 +12,6 @@ function FieldForm({
   fieldType,
   availableFieldTypes
 }) {
-  const id = `gcf-field-${instanceId}`;
-
   const onChangeProperty = property => {
     return event => {
       const value = event.target.value;
@@ -27,7 +25,7 @@ function FieldForm({
 
   const onBlurFieldName = event => {
     const value = event.target.value;
-    if (!!field.title) {
+    if (field.title) {
       return;
     }
     const newField = {

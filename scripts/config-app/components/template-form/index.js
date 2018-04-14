@@ -82,14 +82,7 @@ class TemplateForm extends Component {
   }
 
   render() {
-    const {
-      instanceId,
-      onCancel,
-      onSubmit,
-      postTypes,
-      isDisabled,
-      availableFieldTypes
-    } = this.props;
+    const { instanceId, onCancel, postTypes, isDisabled } = this.props;
     const { editedTemplate } = this.state;
     const isNew = !editedTemplate.id;
 

@@ -59,7 +59,7 @@ status "Creating archive..."
 zip -r gcf.zip \
 	gutenberg-custom-fields.php \
 	lib/*.php \
-	scripts/{fields,config-app}/build/*.{js,css} \
+	scripts/{fields,config-app,i18n}/build/*.{js,css} \
 	languages/gcf-translations.php \
 	readme.txt
 

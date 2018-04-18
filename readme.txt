@@ -31,6 +31,10 @@ The Gutenberg Editor will be pre-filled with the corresponding post type's templ
 
 This plugin is being worked on in <a href="https://github.com/youknowriad/gcf">GitHub</a>
 
+= Documentation =
+
+Documentation can be found [here](https://youknowriad.github.io/gcf/). If you don't find the answers you're looking for, [submit an issue](https://github.com/youknowriad/gcf/issues).
+
 == Changelog ==
 
 = 1.5.0 =

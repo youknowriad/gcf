@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { PlainText } from "@wordpress/blocks";
+import { PlainText } from "@wordpress/editor";
 
 import Field from "../components/field";
 

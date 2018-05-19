@@ -56,11 +56,6 @@ function register_gutenberg_custom_templates_blocks() {
 		json_encode($fields)
 	) );
 	wp_enqueue_style( 'gcf-fields' );
-
-	// Ensures the `wp-editor` loads after the template blocks are registered
-	global $wp_scripts;
-	$script = $wp_scripts->query( 'wp-editor', 'registered' );
-	$script->deps[] = 'gcf-fields';
 }
 
 add_action( 'enqueue_block_editor_assets', 'register_gutenberg_custom_templates_blocks' );

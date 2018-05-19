@@ -1,6 +1,6 @@
 ![logo](icon.svg)
 
-# GCF <small>1.5.1</small>
+# GCF <small>1.5.2</small>
 
 > WordPress Custom Fields, the Gutenberg way.
 

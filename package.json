@@ -1,6 +1,6 @@
 {
   "name": "gutenberg-custom-fields",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
@@ -40,7 +40,5 @@
     "sass-loader": "^6.0.6",
     "webpack": "^3.8.1"
   },
-  "browserslist": [
-    "extends @wordpress/browserslist-config"
-  ]
+  "browserslist": ["extends @wordpress/browserslist-config"]
 }

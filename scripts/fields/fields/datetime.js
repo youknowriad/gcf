@@ -1,11 +1,12 @@
 import { DateTimePicker } from "@wordpress/components";
-import { settings } from "@wordpress/date";
+import { getSettings } from "@wordpress/date";
 import { __ } from "@wordpress/i18n";
 
 import Field from "../components/field";
 
 // To know if the current timezone is a 12 hour time with look for "a" in the time format
 // We also make sure this a is not escaped by a "/"
+const settings = getSettings();
 const is12HourTime = /a(?!\\)/i.test(
   settings.formats.time
     .toLowerCase() // Test only the lower case a

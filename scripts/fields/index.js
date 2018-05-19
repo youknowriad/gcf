@@ -21,9 +21,9 @@ export function registerBlocksForFields(fields = []) {
       category: "common",
       icon: "block-default",
       title: fieldType.label,
-      isPrivate: true,
       supports: {
-        html: false
+        html: false,
+        inserter: false
       },
       attributes: {
         content: {

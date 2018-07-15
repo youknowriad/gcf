@@ -9,14 +9,15 @@ const freeField = {
   getBlockSettings(fieldConfig) {
     return {
       supports: {
-        html: true
+        html: true,
+        inserter: false
       },
       edit() {
         return (
           <Field label={fieldConfig.title || fieldConfig.name}>
             {() => (
               <div className="gcf-freearea">
-                <InnerBlocks />
+                <InnerBlocks templateLock={null} />
               </div>
             )}
           </Field>

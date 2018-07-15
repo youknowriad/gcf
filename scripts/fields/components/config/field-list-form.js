@@ -61,8 +61,6 @@ function FieldListForm({ fields = [], onChange, availableFieldTypes }) {
   );
 }
 
-export default withSelect(select => ({
-  availableFieldTypes: select("gcf/fields")
-    .all()
-    .filter(field => field.editForm)
+export default withSelect((select, { availableFieldTypes }) => ({
+  availableFieldTypes: availableFieldTypes || select("gcf/fields").all()
 }))(FieldListForm);

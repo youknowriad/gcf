@@ -79,8 +79,9 @@ function FieldForm({
         </select>
       </div>
 
-      {fieldType.configForm &&
-        fieldType.configForm({ field, instanceId, onChange })}
+      {fieldType.configForm && (
+        <fieldType.configForm {...{ field, instanceId, onChange }} />
+      )}
     </div>
   );
 }

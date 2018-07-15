@@ -2,6 +2,7 @@ import { map } from "lodash";
 
 import { __ } from "@wordpress/i18n";
 import { IconButton } from "@wordpress/components";
+import { withSelect } from "@wordpress/data";
 
 import Field from "../components/field";
 import ConfigFieldListForm from "../components/config/field-list-form";
@@ -63,7 +64,11 @@ const repeaterField = {
       );
     };
   },
-  configForm: ({ field, onChange }) => {
+  configForm: withSelect(select => ({
+    availableFieldTypes: select("gcf/fields")
+      .all()
+      .filter(field => field.editForm)
+  }))(({ field, onChange, availableFieldTypes }) => {
     const onChangeFields = fields => {
       onChange({
         ...field,
@@ -71,9 +76,13 @@ const repeaterField = {
       });
     };
     return (
-      <ConfigFieldListForm fields={field.fields} onChange={onChangeFields} />
+      <ConfigFieldListForm
+        fields={field.fields}
+        onChange={onChangeFields}
+        availableFieldTypes={availableFieldTypes}
+      />
     );
-  }
+  })
 };
 
 export default repeaterField;

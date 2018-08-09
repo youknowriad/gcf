@@ -1,8 +1,7 @@
 import { map } from "lodash";
 
-import { compose } from "@wordpress/element";
+import { compose, withInstanceId } from "@wordpress/compose";
 import { withSelect } from "@wordpress/data";
-import { withInstanceId } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 function FieldForm({

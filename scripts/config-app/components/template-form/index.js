@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { cloneDeep, map, head, filter } from "lodash";
 import { __, sprintf } from "@wordpress/i18n";
-import { withInstanceId, Button } from "@wordpress/components";
+import { Button } from "@wordpress/components";
 import { Component } from "@wordpress/element";
+import { withInstanceId } from "@wordpress/compose";
 
 import { FieldListForm } from "@gcf/fields";
 

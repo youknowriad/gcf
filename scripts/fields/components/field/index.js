@@ -1,4 +1,4 @@
-import { withInstanceId } from "@wordpress/components";
+import { withInstanceId } from "@wordpress/compose";
 
 import "./style.scss";
 function Field({ instanceId, label, children }) {

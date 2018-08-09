@@ -48,7 +48,8 @@ const wpDependencies = [
   "utils",
   "date",
   "data",
-  "i18n"
+  "i18n",
+  "compose"
 ];
 wpDependencies.forEach(wpDependency => {
   externals["@wordpress/" + wpDependency] = {

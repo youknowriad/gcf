@@ -8,6 +8,7 @@ import {
 } from "@wordpress/components";
 import { MediaUpload } from "@wordpress/editor";
 import { __ } from "@wordpress/i18n";
+import { createElement } from "@wordpress/element";
 
 import Field from "../components/field";
 

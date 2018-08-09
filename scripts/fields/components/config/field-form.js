@@ -3,6 +3,7 @@ import { map } from "lodash";
 import { compose, withInstanceId } from "@wordpress/compose";
 import { withSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
+import { createElement } from "@wordpress/element";
 
 function FieldForm({
   field,

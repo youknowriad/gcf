@@ -3,13 +3,13 @@
   "version": "1.5.3",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
-    "lodash": "^4.17.4",
-    "qs": "^6.5.1",
-    "react-redux": "^5.0.6",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.10",
+    "qs": "^6.5.2",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "uuid": "^3.1.0",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.2",
     "yup": "^0.24.1"
   },
   "scripts": {
@@ -19,26 +19,27 @@
     "package-plugin": "./bin/build-plugin-zip.sh"
   },
   "devDependencies": {
-    "@wordpress/babel-plugin-makepot": "^1.0.0",
-    "@wordpress/babel-preset-default": "^1.1.0",
-    "@wordpress/browserslist-config": "^2.1.0",
-    "@wordpress/i18n": "^1.0.0",
+    "@babel/core": "7.0.0-beta.56",
+    "@wordpress/babel-plugin-makepot": "^2.0.3",
+    "@wordpress/babel-preset-default": "^2.0.4",
+    "@wordpress/browserslist-config": "^2.2.1",
+    "@wordpress/i18n": "^1.2.3",
     "autoprefixer": "^7.1.6",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^8.0.0-beta.4",
     "cross-env": "^5.1.1",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.9",
-    "prettier": "^1.9.1",
+    "prettier": "^1.14.2",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.8.1"
+    "webpack": "^4.8.3",
+    "webpack-cli": "^3.1.0"
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"

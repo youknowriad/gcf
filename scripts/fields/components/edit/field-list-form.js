@@ -1,5 +1,7 @@
 import { map } from "lodash";
 
+import { createElement } from "@wordpress/element";
+
 import fieldForm from "./field-form";
 
 const fieldListForm = fields => {

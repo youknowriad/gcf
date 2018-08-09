@@ -20,7 +20,7 @@
   },
   "settings": {
     "react": {
-      "pragma": "wp"
+      "pragma": "createElement"
     }
   },
   "env": {

@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Component } from "@wordpress/element";
+import { Component, createElement } from "@wordpress/element";
 import { connect } from "react-redux";
 
 import "./style.scss";

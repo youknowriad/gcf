@@ -1,4 +1,5 @@
 import { __ } from "@wordpress/i18n";
+import { createElement } from "@wordpress/element";
 
 import "./style.scss";
 import TemplateNewButton from "../template-new-button";

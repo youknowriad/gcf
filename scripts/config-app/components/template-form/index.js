@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { cloneDeep, map, head, filter } from "lodash";
 import { __, sprintf } from "@wordpress/i18n";
 import { Button } from "@wordpress/components";
-import { Component } from "@wordpress/element";
+import { Component, createElement } from "@wordpress/element";
 import { withInstanceId } from "@wordpress/compose";
 
 import { FieldListForm } from "@gcf/fields";
@@ -42,7 +42,7 @@ class TemplateForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (newProps.template !== this.props.template) {
       this.setState({
         editedTemplate: cloneDeep(newProps.template)

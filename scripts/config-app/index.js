@@ -1,4 +1,4 @@
-import { render } from "@wordpress/element";
+import { render, createElement } from "@wordpress/element";
 import { Provider } from "react-redux";
 
 import "./style.scss";

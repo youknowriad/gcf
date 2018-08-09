@@ -3,6 +3,7 @@ import { map } from "lodash";
 import { __ } from "@wordpress/i18n";
 import { IconButton } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";
+import { createElement } from "@wordpress/element";
 
 import Field from "../components/field";
 import ConfigFieldListForm from "../components/config/field-list-form";

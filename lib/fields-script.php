@@ -9,7 +9,7 @@ function gutenberg_custom_fields_fields_register() {
 	wp_register_script(
 		'gcf-fields',
 		gutenberg_custom_fields_url( 'scripts/fields/build/index.js' ),
-		array( 'wp-element', 'wp-blocks', 'wp-editor', 'wp-components', 'wp-utils', 'wp-date', 'wp-data', 'wp-i18n', 'wp-compose', 'gcf-i18n' ),
+		array( 'wp-element', 'wp-blocks', 'wp-editor', 'wp-components', 'wp-utils', 'wp-date', 'wp-data', 'wp-i18n', 'wp-compose', 'lodash', 'gcf-i18n' ),
 		filemtime( gutenberg_custom_fields_dir_path() . 'scripts/fields/build/index.js' ),
 		true
 	);

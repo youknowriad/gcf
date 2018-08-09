@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Main CSS loader for everything but blocks..
@@ -32,7 +31,8 @@ const extractConfig = {
 const entryPointNames = ["config-app", "fields", "i18n"];
 
 const externals = {
-  react: "React"
+  react: "React",
+  lodash: "lodash"
 };
 entryPointNames.forEach(entryPointName => {
   externals["@gcf/" + entryPointName] = {
@@ -58,6 +58,7 @@ wpDependencies.forEach(wpDependency => {
 });
 
 const config = {
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: entryPointNames.reduce((memo, entryPointName) => {
     memo[entryPointName] = "./scripts/" + entryPointName + "/index.js";
     return memo;
@@ -85,30 +86,10 @@ const config = {
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(
-        process.env.NODE_ENV || "development"
-      )
-    }),
-    cssExtractTextPlugin,
-    new webpack.LoaderOptionsPlugin({
-      minimize: process.env.NODE_ENV === "production",
-      debug: process.env.NODE_ENV !== "production"
-    })
-  ],
+  plugins: [cssExtractTextPlugin],
   stats: {
     children: false
   }
 };
-
-switch (process.env.NODE_ENV) {
-  case "production":
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-    break;
-
-  default:
-    config.devtool = "source-map";
-}
 
 module.exports = config;

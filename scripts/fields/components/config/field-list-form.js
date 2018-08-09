@@ -4,6 +4,7 @@ import uuid from "uuid/v4";
 import { IconButton } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { withSelect } from "@wordpress/data";
+import { createElement } from "@wordpress/element";
 
 import FieldForm from "./field-form";
 

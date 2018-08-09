@@ -1,5 +1,6 @@
 import { IconButton } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+import { createElement } from "@wordpress/element";
 
 import "./style.scss";
 import PostTypeLabel from "../post-type-label";

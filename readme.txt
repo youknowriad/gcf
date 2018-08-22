@@ -2,7 +2,7 @@
 Contributors: youknowriad
 Requires at least: 4.8
 Tested up to: 4.9.6
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gutenberg
@@ -36,6 +36,10 @@ This plugin is being worked on in <a href="https://github.com/youknowriad/gcf">G
 Documentation can be found [here](https://youknowriad.github.io/gcf/). If you don't find the answers you're looking for, [submit an issue](https://github.com/youknowriad/gcf/issues).
 
 == Changelog ==
+
+= 1.5.4 =
+* Compatibility with Gutenberg 3.6
+* Fix blank page issue
 
 = 1.5.4 =
 * Compatibility with Gutenberg 3.5

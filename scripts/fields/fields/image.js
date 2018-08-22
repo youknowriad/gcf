@@ -1,12 +1,11 @@
 import classnames from "classnames";
-import { mediaUpload } from "@wordpress/utils";
 import {
   Placeholder,
   DropZone,
   FormFileUpload,
   Button
 } from "@wordpress/components";
-import { MediaUpload } from "@wordpress/editor";
+import { MediaUpload, mediaUpload } from "@wordpress/editor";
 import { __ } from "@wordpress/i18n";
 import { createElement } from "@wordpress/element";
 
@@ -18,7 +17,11 @@ const imageBlock = {
   editForm: fieldConfig => ({ value, onChange }) => {
     const onSelectImage = media => onChange(media.url);
     const uploadFromFiles = event =>
-      mediaUpload(event.target.files, onSelectImage);
+      mediaUpload({
+        allowedType: "image",
+        filesList: event.target.files,
+        onFileChange: media => onSelectImage(media[0])
+      });
     const dropFiles = files => mediaUpload(files, onSelectImage);
     return (
       <Field label={fieldConfig.title || fieldConfig.name}>

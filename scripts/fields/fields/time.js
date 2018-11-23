@@ -1,5 +1,5 @@
 import { TimePicker } from "@wordpress/components";
-import { getSettings } from "@wordpress/date";
+import { __experimentalGetSettings } from "@wordpress/date";
 import { __ } from "@wordpress/i18n";
 import { createElement } from "@wordpress/element";
 
@@ -7,7 +7,7 @@ import Field from "../components/field";
 
 // To know if the current timezone is a 12 hour time with look for "a" in the time format
 // We also make sure this a is not escaped by a "/"
-const settings = getSettings();
+const settings = __experimentalGetSettings();
 const is12HourTime = /a(?!\\)/i.test(
   settings.formats.time
     .toLowerCase() // Test only the lower case a
@@ -25,7 +25,6 @@ const timeField = {
       <Field label={fieldConfig.title || fieldConfig.name}>
         {() => (
           <TimePicker
-            locale={settings.l10n.locale}
             currentTime={value}
             is12HourTime={is12HourTime}
             onChange={onChange}

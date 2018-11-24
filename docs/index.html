@@ -33,18 +33,7 @@
       loadSidebar: true,
       coverpage: true,
       themeColor: '#2F71A5',
-      repo: 'https://github.com/youknowriad/gcf',
-      plugins: [
-        function (hook, vm) {
-          hook.beforeEach(function (html) {
-            var url = 'https://github.com/youknowriad/gcf/blob/master/docs/' + vm.route.file
-            var editHtml = '<div class="edit-in-github">[📝 Edit](' + url + ' )</div>\n'
-
-            return editHtml
-              + html
-          })
-        }
-      ]
+      repo: 'https://github.com/youknowriad/gcf'
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
